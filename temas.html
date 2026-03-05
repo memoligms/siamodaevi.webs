@@ -1,0 +1,289 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sia Moda Evi ile iletişime geçin.">
+    <title>İletişim | Sia Moda Evi</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="chatbot.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* ---- İletişim Sayfası Düzeni ---- */
+        .temas-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .contact-form .form-group {
+            margin-bottom: 20px;
+        }
+
+        .contact-form label {
+            display: block;
+            font-family: var(--font-ui);
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--color-text-muted);
+            margin-bottom: 8px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--color-border);
+            background: var(--color-bg-card);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            color: var(--color-text);
+            border-radius: var(--radius-sm);
+            transition: border-color 0.25s;
+            display: block;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--color-gold);
+        }
+
+        .contact-form textarea {
+            min-height: 130px;
+            resize: vertical;
+        }
+
+        .btn-submit {
+            display: inline-block;
+            padding: 14px 44px;
+            font-family: var(--font-ui);
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--color-bg);
+            background: var(--color-gold);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 8px;
+        }
+
+        .btn-submit:hover {
+            background: var(--color-gold-dark);
+            transform: translateY(-1px);
+        }
+
+        .contact-info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            margin-bottom: 20px;
+            font-family: var(--font-body);
+            font-size: 1.05rem;
+            color: var(--color-text);
+        }
+
+        .contact-info-item i {
+            color: var(--color-gold);
+            font-size: 1.1rem;
+            min-width: 22px;
+            margin-top: 3px;
+        }
+
+        /* ---- Mobil ---- */
+        @media (max-width: 768px) {
+            .temas-grid {
+                grid-template-columns: 1fr !important;
+                gap: 40px !important;
+            }
+
+            .inner-content {
+                padding: 32px 16px 56px !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .inner-content {
+                padding: 24px 14px 48px !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header class="site-header" id="site-header">
+        <div class="header-top">
+            <div class="header-left"><button class="mobile-menu-btn" id="mobile-menu-btn"
+                    aria-label="Menü"><span></span><span></span><span></span></button></div>
+            <div class="header-center"><a href="index.html" class="logo"><img src="galeri/sia.png" alt="Sia Moda Evi"
+                        style="height:80px;width:auto;object-fit:contain;"></a></div>
+            <div class="header-right">
+                <div class="search-box" id="search-box"><input type="text" data-i18n-placeholder="searchPlaceholder"
+                        placeholder="Ürün ara..." id="search-input"><button class="search-btn" id="search-btn"
+                        aria-label="Ara"><i class="fas fa-search"></i></button></div>
+                <div class="lang-selector"><button class="lang-btn" id="lang-btn"><i class="fas fa-globe"></i> TR <i
+                            class="fas fa-chevron-down" style="font-size:0.5rem"></i></button>
+                    <div class="lang-dropdown" id="lang-dropdown"><a href="#" data-lang="tr">🇹🇷 Türkçe</a><a href="#"
+                            data-lang="en">🇬🇧 English</a><a href="#" data-lang="de">🇩🇪 Deutsch</a><a href="#"
+                            data-lang="ar">🇸🇦 العربية</a></div>
+                </div>
+                <a href="randevu.html" class="btn-appointment" data-i18n="appointment">Randevu Al</a>
+            </div>
+        </div>
+        <nav class="main-nav" id="main-nav">
+            <ul class="nav-list">
+                <li class="nav-item"><a href="gelinlikler.html" class="nav-link"
+                        data-i18n="navGelinlikler">Gelinlikler</a></li>
+                <li class="nav-item"><a href="kinalik.html" class="nav-link" data-i18n="catNisanlik">Kınalıklar</a>
+                </li>
+                <li class="nav-item"><a href="aksesuarlar.html" class="nav-link"
+                        data-i18n="navAksesuarlar">Aksesuarlar</a></li>
+                <li class="nav-item"><a href="koleksiyonlar.html" class="nav-link"
+                        data-i18n="navKoleksiyonlar">Koleksiyonlar</a></li>
+                <li class="nav-item"><a href="magaza-bulucu.html" class="nav-link" data-i18n="navMagaza">Mağaza</a></li>
+                <li class="nav-item"><a href="#" class="nav-link" style="color: var(--color-gold);"
+                        data-i18n="navSirket">Şirket <span class="arrow">▼</span></a>
+                    <div class="dropdown-menu"><a href="hakkimizda.html" data-i18n="navHakkimizda">Hakkımızda</a><a
+                            href="temas.html" data-i18n="navTemas">İletişim</a><a href="esin.html"
+                            data-i18n="navEsin">Esin</a></div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="inner-page">
+        <div class="page-hero">
+            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&q=80" alt="İletişim">
+            <div class="hero-overlay"></div>
+            <div class="page-hero-content">
+                <h1 data-i18n="temasTitle">İletişim</h1>
+                <p data-i18n="temasSubtitle">Sizinle iletişime geçmekten mutluluk duyarız</p>
+            </div>
+        </div>
+
+        <div class="inner-content">
+            <div class="temas-grid animate-on-scroll">
+                <div>
+                    <h2 data-i18n="bizeulasin">Bize Ulaşın</h2>
+                    <div class="gold-line" style="margin: 15px 0 30px;"></div>
+
+                    <div style="margin-bottom: 30px;">
+                        <p class="contact-info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Mareşal Fevzi Çakmak 4. Sk. No:1kat.2 34188 Bahçelievler İstanbul Türkiye</span>
+                        </p>
+                        <p class="contact-info-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+905456538272</span>
+                        </p>
+                        <p class="contact-info-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>aysekeklik1073@gmail.com</span>
+                        </p>
+                        <p class="contact-info-item">
+                            <i class="fas fa-clock"></i>
+                            <span data-i18n="randevuHours">Pazartesi - Cumartesi: 10:00 - 20:00</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div>
+                    <h2 data-i18n="iletisimFormu">İletişim Formu</h2>
+                    <div class="gold-line" style="margin: 15px 0 30px;"></div>
+
+                    <form class="contact-form" style="max-width: 100%; margin-top: 0;"
+                        action="https://formsubmit.co/aysekeklik1073@gmail.com" method="POST">
+                        <input type="hidden" name="_subject" value="Sia Moda Evi - Yeni İletişim Mesajı">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_template" value="table">
+                        <div class="form-group">
+                            <label for="name" data-i18n="formName">İsim Soyisim</label>
+                            <input type="text" id="name" name="isim_soyisim" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" data-i18n="formEmail">E-posta</label>
+                            <input type="email" id="email" name="eposta" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone" data-i18n="formPhone">Telefon</label>
+                            <input type="tel" id="phone" name="telefon">
+                        </div>
+                        <div class="form-group">
+                            <label for="subject" data-i18n="formSubject">Konu</label>
+                            <input type="text" id="subject" name="konu" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message" data-i18n="formMessage">Mesajınız</label>
+                            <textarea id="message" name="mesaj" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit" data-i18n="formSend">Gönder</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-brand"><a href="index.html" class="logo">
+                    <img src="galeri/sia.png" alt="Sia Moda Evi"
+                        style="height:65px;width:auto;object-fit:contain;filter:brightness(0) invert(1);">
+                </a>
+                <p data-i18n="footerDesc">Her kadının özel hissetmesi gereken anlar için.</p>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/siamodaevi?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                        target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/profile.php?id=100075947840451#" target="_blank" rel="noopener"
+                        aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4 data-i18n="footerCol1Title">Koleksiyonlar</h4>
+                <ul>
+                    <li><a href="gelinlikler.html" data-i18n="footerGelinlikler">Gelinlikler</a></li>
+                    <li><a href="kinalik.html" data-i18n="footerNisanliklar">Kınalıklar</a></li>
+                    <li><a href="aksesuarlar.html" data-i18n="footerAksesuarlar">Aksesuarlar</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4 data-i18n="footerCol2Title">Şirket</h4>
+                <ul>
+                    <li><a href="hakkimizda.html" data-i18n="footerHakkimizda">Hakkımızda</a></li>
+                    <li><a href="temas.html" data-i18n="footerIletisim">İletişim</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4 data-i18n="footerCol3Title">Destek</h4>
+                <ul>
+                    <li><a href="#" data-i18n="footerSSS">SSS</a></li>
+                </ul>
+            </div>
+            <div class="footer-col footer-newsletter">
+                <h4 data-i18n="footerCol4Title">Bülten</h4>
+                <p data-i18n="footerBultenDesc">Yeni koleksiyonlardan haberdar olun.</p>
+                <form class="newsletter-form" id="newsletter-form"><input type="email"
+                        data-i18n-placeholder="footerEmailPlaceholder" placeholder="E-posta adresiniz" required><button
+                        type="submit" data-i18n="footerSend">Gönder</button></form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p data-i18n="footerCopyright">&copy; 2026 Sia Moda Evi. Tüm hakları saklıdır.</p>
+            <div class="footer-bottom-links"><a href="#" data-i18n="footerPrivacy">Gizlilik Politikası</a><a href="#"
+                    data-i18n="footerTerms">Kullanım Koşulları</a></div>
+        </div>
+    </footer>
+    <script src="translations.js"></script>
+    <script src="script.js"></script>
+    <script src="chatbot.js"></script>
+</body>
+
+</html>

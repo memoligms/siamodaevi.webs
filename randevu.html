@@ -1,0 +1,382 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sia Moda Evi randevu alma - Hayalinizdeki gelinlik için randevu alın.">
+    <title>Randevu Al | Sia Moda Evi</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="chatbot.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        .randevu-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .randevu-form-section {
+            padding: 50px;
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border-light);
+            border-radius: var(--radius-md);
+        }
+
+        .randevu-form-section h2 {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 400;
+            color: var(--color-white);
+            margin-bottom: 10px;
+        }
+
+        .randevu-form .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .randevu-form .form-group {
+            margin-bottom: 24px;
+        }
+
+        .randevu-form .form-group label {
+            display: block;
+            font-family: var(--font-ui);
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--color-text);
+            margin-bottom: 8px;
+        }
+
+        .randevu-form .form-group input,
+        .randevu-form .form-group select,
+        .randevu-form .form-group textarea {
+            width: 100%;
+            padding: 14px 18px;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            color: var(--color-text);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-sm);
+            transition: border-color var(--transition-fast);
+        }
+
+        .randevu-form .form-group input:focus,
+        .randevu-form .form-group select:focus,
+        .randevu-form .form-group textarea:focus {
+            border-color: var(--color-gold);
+            outline: none;
+        }
+
+        .randevu-form .form-group select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23c9a96e' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+        }
+
+        .randevu-form .form-group select option {
+            background: var(--color-bg-card);
+            color: var(--color-text);
+        }
+
+        .randevu-form .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .randevu-info {
+            padding: 50px;
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border-light);
+            border-radius: var(--radius-md);
+        }
+
+        .randevu-info h3 {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 400;
+            color: var(--color-white);
+            margin-bottom: 20px;
+        }
+
+        .randevu-info>p {
+            font-family: var(--font-body);
+            font-size: 1.05rem;
+            color: var(--color-text-muted);
+            line-height: 1.8;
+            margin-bottom: 40px;
+        }
+
+        .randevu-info-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 25px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--color-border-light);
+            border-radius: var(--radius-md);
+            transition: all var(--transition-medium);
+        }
+
+        .randevu-info-item:hover {
+            border-color: var(--color-border);
+            background: rgba(201, 169, 110, 0.05);
+        }
+
+        .randevu-info-item i {
+            font-size: 1.3rem;
+            color: var(--color-gold);
+            min-width: 30px;
+            text-align: center;
+        }
+
+        .randevu-info-item span {
+            font-family: var(--font-body);
+            font-size: 1rem;
+            color: var(--color-text-muted);
+        }
+
+        .randevu-image {
+            margin-top: 40px;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            height: 250px;
+        }
+
+        .randevu-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        @media (max-width: 768px) {
+            .randevu-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .randevu-form-section,
+            .randevu-info {
+                padding: 30px;
+            }
+
+            .randevu-form .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header class="site-header" id="site-header">
+        <div class="header-top">
+            <div class="header-left"><button class="mobile-menu-btn" id="mobile-menu-btn"
+                    aria-label="Menü"><span></span><span></span><span></span></button></div>
+            <div class="header-center"><a href="index.html" class="logo"><img src="galeri/sia.png" alt="Sia Moda Evi"
+                        style="height:80px;width:auto;object-fit:contain;"></a></div>
+            <div class="header-right">
+                <div class="search-box" id="search-box"><input type="text" data-i18n-placeholder="searchPlaceholder"
+                        placeholder="Ürün ara..." id="search-input"><button class="search-btn" id="search-btn"
+                        aria-label="Ara"><i class="fas fa-search"></i></button></div>
+                <div class="lang-selector"><button class="lang-btn" id="lang-btn"><i class="fas fa-globe"></i> TR <i
+                            class="fas fa-chevron-down" style="font-size:0.5rem"></i></button>
+                    <div class="lang-dropdown" id="lang-dropdown"><a href="#" data-lang="tr">🇹🇷 Türkçe</a><a href="#"
+                            data-lang="en">🇬🇧 English</a><a href="#" data-lang="de">🇩🇪 Deutsch</a><a href="#"
+                            data-lang="ar">🇸🇦 العربية</a></div>
+                </div>
+                <a href="randevu.html" class="btn-appointment" data-i18n="appointment">Randevu Al</a>
+            </div>
+        </div>
+        <nav class="main-nav" id="main-nav">
+            <ul class="nav-list">
+                <li class="nav-item"><a href="gelinlikler.html" class="nav-link"
+                        data-i18n="navGelinlikler">Gelinlikler</a></li>
+                <li class="nav-item"><a href="kinalik.html" class="nav-link"
+                        data-i18n="catNisanlik">Kınalıklar</a>
+                </li>
+                <li class="nav-item"><a href="aksesuarlar.html" class="nav-link"
+                        data-i18n="navAksesuarlar">Aksesuarlar</a></li>
+                <li class="nav-item"><a href="koleksiyonlar.html" class="nav-link"
+                        data-i18n="navKoleksiyonlar">Koleksiyonlar</a></li>
+                <li class="nav-item"><a href="magaza-bulucu.html" class="nav-link" data-i18n="navMagaza">Mağaza</a></li>
+                <li class="nav-item"><a href="#" class="nav-link" data-i18n="navSirket">Şirket <span
+                            class="arrow">▼</span></a>
+                    <div class="dropdown-menu"><a href="hakkimizda.html" data-i18n="navHakkimizda">Hakkımızda</a><a
+                            href="temas.html" data-i18n="navTemas">İletişim</a><a href="esin.html"
+                            data-i18n="navEsin">Esin</a></div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="inner-page">
+        <div class="page-hero">
+            <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=1920&q=80" alt="Randevu Al">
+            <div class="hero-overlay"></div>
+            <div class="page-hero-content">
+                <h1 data-i18n="randevuTitle">Randevu Al</h1>
+                <p data-i18n="randevuSubtitle">Hayalinizdeki gelinliğe kavuşmak için randevu alın</p>
+            </div>
+        </div>
+
+        <div class="inner-content" style="max-width: 1200px;">
+            <div class="randevu-layout animate-on-scroll">
+                <div class="randevu-form-section">
+                    <h2 data-i18n="randevuTitle">Randevu Al</h2>
+                    <div class="gold-line" style="margin: 15px 0 30px; margin-left: 0;"></div>
+
+                    <form class="randevu-form" id="randevu-form" action="https://formsubmit.co/aysekeklik1073@gmail.com"
+                        method="POST">
+                        <input type="hidden" name="_subject" value="Sia Moda Evi - Yeni Randevu Talebi">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_template" value="table">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="randevu-name" data-i18n="randevuName">İsim Soyisim</label>
+                                <input type="text" id="randevu-name" name="isim_soyisim" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="randevu-email" data-i18n="randevuEmail">E-posta</label>
+                                <input type="email" id="randevu-email" name="eposta" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="randevu-phone" data-i18n="randevuPhone">Telefon</label>
+                                <input type="tel" id="randevu-phone" name="telefon" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="randevu-category" data-i18n="randevuCategory">İlgilendiğiniz
+                                    Kategori</label>
+                                <select id="randevu-category" name="kategori" required>
+                                    <option value="" data-i18n="randevuSelectCategory">Kategori Seçin</option>
+                                    <option value="Gelinlikler" data-i18n="navGelinlikler">Gelinlikler</option>
+                                    <option value="Kınalıklar" data-i18n="catNisanlik">Kınalıklar</option>
+                                    <option value="Aksesuarlar" data-i18n="navAksesuarlar">Aksesuarlar</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="randevu-date" data-i18n="randevuDate">Tarih</label>
+                                <input type="date" id="randevu-date" name="tarih" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="randevu-time" data-i18n="randevuTime">Saat</label>
+                                <select id="randevu-time" name="saat" required>
+                                    <option value="10:00">10:00</option>
+                                    <option value="11:00">11:00</option>
+                                    <option value="12:00">12:00</option>
+                                    <option value="13:00">13:00</option>
+                                    <option value="14:00">14:00</option>
+                                    <option value="15:00">15:00</option>
+                                    <option value="16:00">16:00</option>
+                                    <option value="17:00">17:00</option>
+                                    <option value="18:00">18:00</option>
+                                    <option value="19:00">19:00</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="randevu-notes" data-i18n="randevuNotes">Notlarınız</label>
+                            <textarea id="randevu-notes" name="notlar"></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit" data-i18n="randevuSubmit">Randevu Al</button>
+                    </form>
+                </div>
+
+                <div class="randevu-info">
+                    <h3 data-i18n="randevuInfoTitle">Randevu Bilgileri</h3>
+                    <p data-i18n="randevuInfoDesc">Randevunuz sırasında deneyimli stil danışmanlarımız size özel bir
+                        alışveriş deneyimi sunacaktır.</p>
+
+                    <div class="randevu-info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span data-i18n="randevuAddress">Mareşal Fevzi Çakmak 4. Sk. No:1kat.2 34188 Bahçelievler
+                            İstanbul Türkiye Istanbul, Turkey</span>
+                    </div>
+                    <div class="randevu-info-item">
+                        <i class="fas fa-phone"></i>
+                        <span data-i18n="randevuPhoneNum">+905456538272</span>
+                    </div>
+                    <div class="randevu-info-item">
+                        <i class="fas fa-envelope"></i>
+                        <span data-i18n="randevuEmailAddr">aysekeklik1073@gmail.com</span>
+                    </div>
+                    <div class="randevu-info-item">
+                        <i class="fas fa-clock"></i>
+                        <span data-i18n="randevuHours">Pazartesi - Cumartesi: 10:00 - 20:00</span>
+                    </div>
+
+                    <div class="randevu-image">
+                        <img src="https://images.unsplash.com/photo-1550005809-91ad75fb315f?w=800&q=80"
+                            alt="Sia Moda Evi Mağaza">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-brand"><a href="index.html" class="logo">
+                    <img src="galeri/sia.png" alt="Sia Moda Evi"
+                        style="height:65px;width:auto;object-fit:contain;filter:brightness(0) invert(1);">
+                </a>
+                <p data-i18n="footerDesc">Her kadının özel hissetmesi gereken anlar için tasarlanmış koleksiyonlar.</p>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/siamodaevi?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/profile.php?id=100075947840451#" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4 data-i18n="footerCol1Title">Koleksiyonlar</h4>
+                <ul>
+                    <li><a href="gelinlikler.html" data-i18n="footerGelinlikler">Gelinlikler</a></li>
+                    <li><a href="kinalik.html" data-i18n="footerNisanliklar">Kınalıklar</a></li>
+                    <li><a href="aksesuarlar.html" data-i18n="footerAksesuarlar">Aksesuarlar</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4 data-i18n="footerCol2Title">Şirket</h4>
+                <ul>
+                    <li><a href="hakkimizda.html" data-i18n="footerHakkimizda">Hakkımızda</a></li>
+                    <li><a href="temas.html" data-i18n="footerIletisim">İletişim</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4 data-i18n="footerCol3Title">Destek</h4>
+                <ul>
+                    <li><a href="#" data-i18n="footerSSS">SSS</a></li>
+                </ul>
+            </div>
+            <div class="footer-col footer-newsletter">
+                <h4 data-i18n="footerCol4Title">Bülten</h4>
+                <p data-i18n="footerBultenDesc">Yeni koleksiyonlardan haberdar olun.</p>
+                <form class="newsletter-form" id="newsletter-form"><input type="email"
+                        data-i18n-placeholder="footerEmailPlaceholder" placeholder="E-posta adresiniz" required><button
+                        type="submit" data-i18n="footerSend">Gönder</button></form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p data-i18n="footerCopyright">&copy; 2026 Sia Moda Evi. Tüm hakları saklıdır.</p>
+            <div class="footer-bottom-links"><a href="#" data-i18n="footerPrivacy">Gizlilik Politikası</a><a href="#"
+                    data-i18n="footerTerms">Kullanım Koşulları</a></div>
+        </div>
+    </footer>
+    <script src="translations.js"></script>
+    <script src="script.js"></script>
+    <script src="chatbot.js"></script>
+</body>
+
+</html>

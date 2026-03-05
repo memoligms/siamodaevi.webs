@@ -1,0 +1,737 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Sia Moda Evi koleksiyonları - 2026 Gelinlik ve Kınalık koleksiyonlarının en zarif tasarımları.">
+    <title>Koleksiyonlar | Sia Moda Evi</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="chatbot.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* ---- Collection Cards ---- */
+        .collection-cards-section {
+            padding: 80px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .collection-duo {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        @media (max-width: 768px) {
+            .collection-duo {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .collection-cards-section {
+                padding: 60px 20px;
+            }
+        }
+
+        .col-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 2px;
+            cursor: pointer;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.18);
+            background: #0a0a0a;
+        }
+
+        .col-card img {
+            width: 100%;
+            height: 520px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.7s ease, filter 0.5s ease;
+            filter: brightness(0.75);
+        }
+
+        .col-card:hover img {
+            transform: scale(1.06);
+            filter: brightness(0.55);
+        }
+
+        .col-card-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 40px 35px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.3) 60%, transparent 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .col-card-badge {
+            font-family: var(--font-ui);
+            font-size: 0.6rem;
+            font-weight: 700;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--color-gold);
+            background: rgba(var(--color-gold-rgb, 212, 175, 55), 0.12);
+            border: 1px solid var(--color-gold);
+            padding: 4px 10px;
+            border-radius: 1px;
+        }
+
+        .col-card-title {
+            font-family: var(--font-display);
+            font-size: 1.85rem;
+            color: #fff;
+            margin: 0;
+            line-height: 1.2;
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        .col-card-subtitle {
+            font-family: var(--font-ui);
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.7);
+            letter-spacing: 0.05em;
+            margin: 0;
+        }
+
+        .col-card-btn {
+            margin-top: 12px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 28px;
+            background: var(--color-gold);
+            color: #0a0a0a;
+            font-family: var(--font-ui);
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+        }
+
+        .col-card-btn:hover {
+            background: #fff;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.35);
+        }
+
+        .col-card-btn i {
+            font-size: 0.75rem;
+            transition: transform 0.3s;
+        }
+
+        .col-card-btn:hover i {
+            transform: translateX(4px);
+        }
+
+        /* ---- Modal Gallery ---- */
+        .col-modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: rgba(253, 250, 245, 0.98);
+            overflow-y: auto;
+        }
+
+        .col-modal-overlay.active {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .col-modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 28px 40px 20px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            position: sticky;
+            top: 0;
+            background: rgba(253, 250, 245, 0.99);
+            border-bottom: 1px solid var(--color-border);
+            z-index: 10;
+        }
+
+        .col-modal-title-wrap h2 {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            color: var(--color-text);
+            margin: 0 0 4px;
+        }
+
+        .col-modal-title-wrap p {
+            font-family: var(--font-ui);
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            color: var(--color-gold);
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        .col-modal-close {
+            width: 44px;
+            height: 44px;
+            background: none;
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            color: var(--color-gold);
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.25s;
+        }
+
+        .col-modal-close:hover {
+            background: var(--color-gold);
+            color: var(--color-bg);
+        }
+
+        .col-modal-body {
+            padding: 40px;
+            flex: 1;
+        }
+
+        .col-modal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 600px) {
+            .col-modal-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+
+            .col-modal-header {
+                padding: 18px 20px;
+            }
+
+            .col-modal-body {
+                padding: 20px;
+            }
+        }
+
+        .col-modal-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1px;
+            cursor: pointer;
+            aspect-ratio: 3/4;
+            background: var(--color-bg-card);
+        }
+
+        .col-modal-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .col-modal-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .col-modal-item-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0);
+            transition: background 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .col-modal-item:hover .col-modal-item-overlay {
+            background: rgba(0, 0, 0, 0.35);
+        }
+
+        .col-modal-item-overlay i {
+            color: #fff;
+            font-size: 1.5rem;
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.3s;
+        }
+
+        .col-modal-item:hover .col-modal-item-overlay i {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .col-modal-item-name {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 30px 14px 14px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent);
+            font-family: var(--font-ui);
+            font-size: 0.78rem;
+            color: var(--color-text-muted);
+            letter-spacing: 0.03em;
+        }
+
+        /* Lightbox */
+        .lightbox-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 99999;
+            background: rgba(0, 0, 0, 0.97);
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .lightbox-overlay.active {
+            display: flex;
+        }
+
+        .lightbox-img-wrap {
+            position: relative;
+            max-width: 90vw;
+            max-height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-overlay img {
+            max-width: 90vw;
+            max-height: 80vh;
+            object-fit: contain;
+            border-radius: 1px;
+        }
+
+        .lightbox-close {
+            position: fixed;
+            top: 20px;
+            right: 24px;
+            width: 44px;
+            height: 44px;
+            background: none;
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            color: var(--color-gold);
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 100000;
+            transition: all 0.25s;
+        }
+
+        .lightbox-close:hover {
+            background: var(--color-gold);
+            color: #000;
+        }
+
+        .lightbox-nav {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 44px;
+            height: 44px;
+            background: rgba(212, 175, 55, 0.15);
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            color: var(--color-gold);
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.25s;
+            z-index: 100000;
+        }
+
+        .lightbox-nav:hover {
+            background: var(--color-gold);
+            color: #000;
+        }
+
+        .lightbox-prev {
+            left: 16px;
+        }
+
+        .lightbox-next {
+            right: 16px;
+        }
+
+        .lightbox-caption {
+            font-family: var(--font-ui);
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.6);
+            letter-spacing: 0.08em;
+            margin-top: 14px;
+        }
+
+        /* Count badge */
+        .col-modal-count {
+            font-family: var(--font-ui);
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.45);
+            text-align: center;
+            padding: 12px 0 20px;
+            letter-spacing: 0.1em;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header class="site-header" id="site-header">
+        <div class="header-top">
+            <div class="header-left"><button class="mobile-menu-btn" id="mobile-menu-btn"
+                    aria-label="Menü"><span></span><span></span><span></span></button></div>
+            <div class="header-center"><a href="index.html" class="logo"><img src="galeri/sia.png" alt="Sia Moda Evi"
+                        style="height:80px;width:auto;object-fit:contain;"></a></div>
+            <div class="header-right">
+                <div class="search-box" id="search-box"><input type="text" data-i18n-placeholder="searchPlaceholder"
+                        placeholder="Ürün ara..." id="search-input"><button class="search-btn" id="search-btn"
+                        aria-label="Ara"><i class="fas fa-search"></i></button></div>
+                <div class="lang-selector">
+                    <button class="lang-btn" id="lang-btn"><i class="fas fa-globe"></i> TR <i
+                            class="fas fa-chevron-down" style="font-size:0.5rem"></i></button>
+                    <div class="lang-dropdown" id="lang-dropdown">
+                        <a href="#" data-lang="tr">🇹🇷 Türkçe</a>
+                        <a href="#" data-lang="en">🇬🇧 English</a>
+                        <a href="#" data-lang="de">🇩🇪 Deutsch</a>
+                        <a href="#" data-lang="ar">🇸🇦 العربية</a>
+                    </div>
+                </div>
+                <a href="randevu.html" class="btn-appointment" data-i18n="appointment">Randevu Al</a>
+            </div>
+        </div>
+        <nav class="main-nav" id="main-nav">
+            <ul class="nav-list">
+                <li class="nav-item"><a href="gelinlikler.html" class="nav-link"
+                        data-i18n="navGelinlikler">Gelinlikler</a></li>
+                <li class="nav-item"><a href="kinalik.html" class="nav-link" data-i18n="catNisanlik">Kınalıklar</a></li>
+                <li class="nav-item"><a href="aksesuarlar.html" class="nav-link"
+                        data-i18n="navAksesuarlar">Aksesuarlar</a></li>
+                <li class="nav-item"><a href="koleksiyonlar.html" class="nav-link" style="color: var(--color-gold);"
+                        data-i18n="navKoleksiyonlar">Koleksiyonlar</a></li>
+                <li class="nav-item"><a href="magaza-bulucu.html" class="nav-link" data-i18n="navMagaza">Mağaza</a></li>
+                <li class="nav-item"><a href="#" class="nav-link" data-i18n="navSirket">Şirket <span
+                            class="arrow">▼</span></a>
+                    <div class="dropdown-menu"><a href="hakkimizda.html" data-i18n="navHakkimizda">Hakkımızda</a><a
+                            href="temas.html" data-i18n="navTemas">İletişim</a><a href="esin.html"
+                            data-i18n="navEsin">Esin</a></div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="inner-page">
+        <!-- Hero -->
+        <div class="page-hero">
+            <img src="galeri/model1/OMER4406.JPG" alt="Koleksiyonlar">
+            <div class="hero-overlay"></div>
+            <div class="page-hero-content">
+                <h1 data-i18n="koleksiyonlarTitle">Koleksiyonlar</h1>
+                <p data-i18n="koleksiyonlarSubtitle">2026 sezonunun en zarif tasarımları</p>
+            </div>
+        </div>
+
+        <!-- Collections Section -->
+        <section class="collection-cards-section">
+            <div class="animate-on-scroll" style="text-align: center;">
+                <h2 class="section-title" data-i18n="sezonTitle">2026 Sezon Koleksiyonları</h2>
+                <div class="gold-line"></div>
+                <p class="section-subtitle" data-i18n="sezonSubtitle">Her koleksiyon, benzersiz bir ilham kaynağından
+                    doğar</p>
+            </div>
+
+            <div class="collection-duo animate-on-scroll">
+                <!-- Collection 1: Gelinlik -->
+                <div class="col-card" id="col-gelinlik">
+                    <img src="galeri/model1/OMER4406.JPG" alt="2026 Gelinlik Koleksiyonu">
+                    <div class="col-card-content">
+                        <span class="col-card-badge">2026 Koleksiyon</span>
+                        <h3 class="col-card-title">2026 Gelinlik<br>Koleksiyonu</h3>
+                        <p class="col-card-subtitle">El işçiliği · Terzilik · Zarafet</p>
+                        <button class="col-card-btn" onclick="openModal('gelinlik')">
+                            <span>İncele</span>
+                            <i class="fas fa-long-arrow-alt-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Collection 2: Kınalık -->
+                <div class="col-card" id="col-kinalik">
+                    <img src="galeri/model7/OMER4934.JPG" alt="2026 Kınalık Koleksiyonu">
+                    <div class="col-card-content">
+                        <span class="col-card-badge">2026 Koleksiyon</span>
+                        <h3 class="col-card-title">2026 Kınalık<br>Koleksiyonu</h3>
+                        <p class="col-card-subtitle">Tutku · Renk · İhtişam</p>
+                        <button class="col-card-btn" onclick="openModal('kinalik')">
+                            <span>İncele</span>
+                            <i class="fas fa-long-arrow-alt-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Custom Design CTA -->
+        <section style="padding: 100px 40px; text-align: center; background: var(--color-bg-alt);">
+            <div class="animate-on-scroll">
+                <h2 class="section-title" data-i18n="ozelTasarimTitle">Özel Tasarım<br><span
+                        class="gold-text">Hizmeti</span></h2>
+                <div class="gold-line"></div>
+                <p class="section-subtitle" style="max-width: 600px;" data-i18n="ozelTasarimDesc">Hayalinizdeki
+                    gelinliği gerçeğe dönüştürmek için özel tasarım hizmetimizden yararlanın. Deneyimli
+                    tasarımcılarımız, her detayı sizinle birlikte şekillendirir.</p>
+                <a href="randevu.html"
+                    style="display: inline-block; margin-top: 40px; padding: 16px 50px; font-family: var(--font-ui); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-bg); background: var(--color-gold); transition: all 0.4s ease;"
+                    data-i18n="ozelTasarimBtn">Randevu Alın</a>
+            </div>
+        </section>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-brand"><a href="index.html" class="logo">
+                    <img src="galeri/sia.png" alt="Sia Moda Evi"
+                        style="height:65px;width:auto;object-fit:contain;filter:brightness(0) invert(1);">
+                </a>
+                <p data-i18n="footerDesc">Her kadının özel hissetmesi gereken anlar için.</p>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/siamodaevi?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                        target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/profile.php?id=100075947840451#" target="_blank" rel="noopener"
+                        aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4 data-i18n="footerCol1Title">Koleksiyonlar</h4>
+                <ul>
+                    <li><a href="gelinlikler.html" data-i18n="footerGelinlikler">Gelinlikler</a></li>
+                    <li><a href="kinalik.html" data-i18n="footerNisanliklar">Kınalıklar</a></li>
+                    <li><a href="aksesuarlar.html" data-i18n="footerAksesuarlar">Aksesuarlar</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4 data-i18n="footerCol2Title">Şirket</h4>
+                <ul>
+                    <li><a href="hakkimizda.html" data-i18n="footerHakkimizda">Hakkımızda</a></li>
+                    <li><a href="temas.html" data-i18n="footerIletisim">İletişim</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4 data-i18n="footerCol3Title">Destek</h4>
+                <ul>
+                    <li><a href="#" data-i18n="footerSSS">SSS</a></li>
+                </ul>
+            </div>
+            <div class="footer-col footer-newsletter">
+                <h4 data-i18n="footerCol4Title">Bülten</h4>
+                <p data-i18n="footerBultenDesc">Yeni koleksiyonlardan haberdar olun.</p>
+                <form class="newsletter-form" id="newsletter-form"><input type="email"
+                        data-i18n-placeholder="footerEmailPlaceholder" placeholder="E-posta adresiniz" required><button
+                        type="submit" data-i18n="footerSend">Gönder</button></form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p data-i18n="footerCopyright">© 2026 Sia Moda Evi. Tüm hakları saklıdır.</p>
+            <div class="footer-bottom-links"><a href="#" data-i18n="footerPrivacy">Gizlilik Politikası</a><a href="#"
+                    data-i18n="footerTerms">Kullanım Koşulları</a></div>
+        </div>
+    </footer>
+
+    <!-- MODAL: Gelinlik Koleksiyonu -->
+    <div class="col-modal-overlay" id="modal-gelinlik" role="dialog" aria-modal="true"
+        aria-label="2026 Gelinlik Koleksiyonu">
+        <div class="col-modal-header">
+            <div class="col-modal-title-wrap">
+                <p>2026 Koleksiyon</p>
+                <h2>2026 Gelinlik Koleksiyonu</h2>
+            </div>
+            <button class="col-modal-close" onclick="closeModal('gelinlik')" aria-label="Kapat"><i
+                    class="fas fa-times"></i></button>
+        </div>
+        <div class="col-modal-body">
+            <div class="col-modal-count" id="count-gelinlik"></div>
+            <div class="col-modal-grid" id="grid-gelinlik"></div>
+        </div>
+    </div>
+
+    <!-- MODAL: Kınalık Koleksiyonu -->
+    <div class="col-modal-overlay" id="modal-kinalik" role="dialog" aria-modal="true"
+        aria-label="2026 Kınalık Koleksiyonu">
+        <div class="col-modal-header">
+            <div class="col-modal-title-wrap">
+                <p>2026 Koleksiyon</p>
+                <h2>2026 Kınalık Koleksiyonu</h2>
+            </div>
+            <button class="col-modal-close" onclick="closeModal('kinalik')" aria-label="Kapat"><i
+                    class="fas fa-times"></i></button>
+        </div>
+        <div class="col-modal-body">
+            <div class="col-modal-count" id="count-kinalik"></div>
+            <div class="col-modal-grid" id="grid-kinalik"></div>
+        </div>
+    </div>
+
+    <!-- LIGHTBOX -->
+    <div class="lightbox-overlay" id="lightbox">
+        <button class="lightbox-close" id="lb-close" aria-label="Kapat"><i class="fas fa-times"></i></button>
+        <button class="lightbox-nav lightbox-prev" id="lb-prev" aria-label="Önceki"><i
+                class="fas fa-chevron-left"></i></button>
+        <div class="lightbox-img-wrap">
+            <img id="lb-img" src="" alt="">
+        </div>
+        <p class="lightbox-caption" id="lb-caption"></p>
+        <button class="lightbox-nav lightbox-next" id="lb-next" aria-label="Sonraki"><i
+                class="fas fa-chevron-right"></i></button>
+    </div>
+
+    <script src="translations.js"></script>
+    <script src="products.js"></script>
+    <script src="script.js"></script>
+    <script src="chatbot.js"></script>
+    <script>
+        // ---- Collection Images Data ----
+        // Gather all images from products in each category
+        function getCategoryImages(category) {
+            return products
+                .filter(p => p.category === category)
+                .map(p => ({ name: p.name, image: p.image }));
+        }
+
+        // ---- Build Modal Grid ----
+        function buildGrid(category) {
+            const items = getCategoryImages(category);
+            const grid = document.getElementById('grid-' + category);
+            const countEl = document.getElementById('count-' + category);
+
+            if (!grid) return;
+
+            grid.innerHTML = '';
+            if (countEl) {
+                countEl.textContent = items.length + ' tasarım';
+            }
+
+            items.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'col-modal-item';
+                div.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}" loading="lazy">
+                    <div class="col-modal-item-overlay"><i class="fas fa-expand"></i></div>
+                    <div class="col-modal-item-name">${item.name}</div>
+                `;
+                div.addEventListener('click', () => openLightbox(category, index));
+                grid.appendChild(div);
+            });
+        }
+
+        // ---- Modal Open/Close ----
+        function openModal(category) {
+            buildGrid(category);
+            const modal = document.getElementById('modal-' + category);
+            if (modal) {
+                modal.classList.add('active');
+                modal.scrollTop = 0;
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeModal(category) {
+            const modal = document.getElementById('modal-' + category);
+            if (modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Close modals on backdrop click
+        document.querySelectorAll('.col-modal-overlay').forEach(modal => {
+            modal.addEventListener('click', function (e) {
+                if (e.target === this) {
+                    this.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+        });
+
+        // ---- Lightbox ----
+        let lbImages = [];
+        let lbIndex = 0;
+        let lbCategory = '';
+
+        function openLightbox(category, index) {
+            lbCategory = category;
+            lbImages = getCategoryImages(category);
+            lbIndex = index;
+            renderLightbox();
+            document.getElementById('lightbox').classList.add('active');
+        }
+
+        function renderLightbox() {
+            const item = lbImages[lbIndex];
+            document.getElementById('lb-img').src = item.image;
+            document.getElementById('lb-img').alt = item.name;
+            document.getElementById('lb-caption').textContent = item.name + '  ·  ' + (lbIndex + 1) + ' / ' + lbImages.length;
+        }
+
+        document.getElementById('lb-close').addEventListener('click', () => {
+            document.getElementById('lightbox').classList.remove('active');
+        });
+
+        document.getElementById('lb-prev').addEventListener('click', () => {
+            lbIndex = (lbIndex - 1 + lbImages.length) % lbImages.length;
+            renderLightbox();
+        });
+
+        document.getElementById('lb-next').addEventListener('click', () => {
+            lbIndex = (lbIndex + 1) % lbImages.length;
+            renderLightbox();
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            const lb = document.getElementById('lightbox');
+            if (lb.classList.contains('active')) {
+                if (e.key === 'ArrowLeft') { lbIndex = (lbIndex - 1 + lbImages.length) % lbImages.length; renderLightbox(); }
+                if (e.key === 'ArrowRight') { lbIndex = (lbIndex + 1) % lbImages.length; renderLightbox(); }
+                if (e.key === 'Escape') { lb.classList.remove('active'); }
+            } else {
+                // Close modals with Escape
+                if (e.key === 'Escape') {
+                    document.querySelectorAll('.col-modal-overlay.active').forEach(m => {
+                        m.classList.remove('active');
+                        document.body.style.overflow = '';
+                    });
+                }
+            }
+        });
+
+        // Lightbox backdrop click
+        document.getElementById('lightbox').addEventListener('click', function (e) {
+            if (e.target === this || e.target.id === 'lb-img') {
+                if (e.target.id !== 'lb-img') this.classList.remove('active');
+            }
+            if (e.target === this) this.classList.remove('active');
+        });
+    </script>
+</body>
+
+</html>

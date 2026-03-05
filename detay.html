@@ -1,0 +1,481 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sia Moda Evi - Ürün Detayı">
+    <title>Ürün Detayı | Sia Moda Evi</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="chatbot.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        .detail-gallery {
+            display: grid;
+            grid-template-columns: 80px 1fr;
+            gap: 16px;
+            align-items: start;
+        }
+
+        .detail-thumbnails {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .detail-thumbnails img {
+            width: 80px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            border: 2px solid transparent;
+            opacity: 0.6;
+            transition: all var(--transition-fast);
+        }
+
+        .detail-thumbnails img.active,
+        .detail-thumbnails img:hover {
+            border-color: var(--color-gold);
+            opacity: 1;
+        }
+
+        .detail-main-image {
+            position: relative;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            aspect-ratio: 3/4;
+        }
+
+        .detail-main-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.3s ease;
+        }
+
+        .detail-image-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+            z-index: 2;
+        }
+
+        .detail-image-nav:hover {
+            background: var(--color-gold);
+        }
+
+        .detail-image-nav.prev {
+            left: 10px;
+        }
+
+        .detail-image-nav.next {
+            right: 10px;
+        }
+
+        .detail-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 40px 80px;
+            align-items: start;
+        }
+
+        .detail-info h1 {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            font-weight: 400;
+            color: var(--color-white);
+            letter-spacing: 0.05em;
+            margin-bottom: 15px;
+        }
+
+        .detail-price {
+            font-family: var(--font-ui);
+            font-size: 1.4rem;
+            color: var(--color-gold);
+            letter-spacing: 0.05em;
+            margin-bottom: 20px;
+        }
+
+        .detail-badge {
+            display: inline-block;
+            padding: 5px 16px;
+            font-family: var(--font-ui);
+            font-size: 0.6rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--color-bg);
+            background: var(--color-gold);
+            border-radius: 20px;
+            margin-bottom: 20px;
+        }
+
+        .detail-description {
+            font-family: var(--font-body);
+            font-size: 1.1rem;
+            color: var(--color-text-muted);
+            line-height: 1.9;
+            margin-bottom: 30px;
+        }
+
+        .detail-attributes {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .detail-attr {
+            padding: 18px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--color-border-light);
+            border-radius: var(--radius-sm);
+        }
+
+        .detail-attr-label {
+            font-family: var(--font-ui);
+            font-size: 0.6rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--color-gold);
+            margin-bottom: 5px;
+        }
+
+        .detail-attr-value {
+            font-family: var(--font-body);
+            font-size: 1.05rem;
+            color: var(--color-text);
+        }
+
+        .detail-cta {
+            display: inline-block;
+            padding: 18px 55px;
+            font-family: var(--font-ui);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--color-bg);
+            background: var(--color-gold);
+            transition: all var(--transition-medium);
+            margin-right: 15px;
+        }
+
+        .detail-cta:hover {
+            background: var(--color-gold-light);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 40px rgba(201, 169, 110, 0.3);
+        }
+
+        .detail-back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-ui);
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--color-text-muted);
+            margin-top: 25px;
+            transition: color var(--transition-fast);
+        }
+
+        .detail-back-link:hover {
+            color: var(--color-gold);
+        }
+
+        .not-found-container {
+            text-align: center;
+            padding: 100px 40px;
+        }
+
+        .not-found-container h2 {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            color: var(--color-white);
+            margin-bottom: 15px;
+        }
+
+        .not-found-container p {
+            color: var(--color-text-muted);
+            margin-bottom: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .detail-layout {
+                grid-template-columns: 1fr;
+                padding: 30px 20px 60px;
+            }
+
+            .detail-gallery {
+                grid-template-columns: 60px 1fr;
+            }
+
+            .detail-thumbnails img {
+                width: 60px;
+                height: 80px;
+            }
+
+            .detail-info h1 {
+                font-size: 1.8rem;
+            }
+
+            .detail-attributes {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header class="site-header" id="site-header">
+        <div class="header-top">
+            <div class="header-left"><button class="mobile-menu-btn" id="mobile-menu-btn"
+                    aria-label="Menü"><span></span><span></span><span></span></button></div>
+            <div class="header-center"><a href="index.html" class="logo"><img src="galeri/sia.png" alt="Sia Moda Evi"
+                        style="height:80px;width:auto;object-fit:contain;"></a></div>
+            <div class="header-right">
+                <div class="search-box" id="search-box"><input type="text" data-i18n-placeholder="searchPlaceholder"
+                        placeholder="Ürün ara..." id="search-input"><button class="search-btn" id="search-btn"
+                        aria-label="Ara"><i class="fas fa-search"></i></button></div>
+                <div class="lang-selector"><button class="lang-btn" id="lang-btn"><i class="fas fa-globe"></i> TR <i
+                            class="fas fa-chevron-down" style="font-size:0.5rem"></i></button>
+                    <div class="lang-dropdown" id="lang-dropdown"><a href="#" data-lang="tr">🇹🇷 Türkçe</a><a href="#"
+                            data-lang="en">🇬🇧 English</a><a href="#" data-lang="de">🇩🇪 Deutsch</a><a href="#"
+                            data-lang="ar">🇸🇦 العربية</a></div>
+                </div>
+                <a href="randevu.html" class="btn-appointment" data-i18n="appointment">Randevu Al</a>
+            </div>
+        </div>
+        <nav class="main-nav" id="main-nav">
+            <ul class="nav-list">
+                <li class="nav-item"><a href="gelinlikler.html" class="nav-link"
+                        data-i18n="navGelinlikler">Gelinlikler</a></li>
+                <li class="nav-item"><a href="kinalik.html" class="nav-link"
+                        data-i18n="catNisanlik">Kınalıklar</a>
+                </li>
+                <li class="nav-item"><a href="aksesuarlar.html" class="nav-link"
+                        data-i18n="navAksesuarlar">Aksesuarlar</a></li>
+                <li class="nav-item"><a href="koleksiyonlar.html" class="nav-link"
+                        data-i18n="navKoleksiyonlar">Koleksiyonlar</a></li>
+                <li class="nav-item"><a href="magaza-bulucu.html" class="nav-link" data-i18n="navMagaza">Mağaza</a></li>
+                <li class="nav-item"><a href="#" class="nav-link" data-i18n="navSirket">Şirket <span
+                            class="arrow">▼</span></a>
+                    <div class="dropdown-menu"><a href="hakkimizda.html" data-i18n="navHakkimizda">Hakkımızda</a><a
+                            href="temas.html" data-i18n="navTemas">İletişim</a><a href="esin.html"
+                            data-i18n="navEsin">Esin</a></div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div id="product-content" style="min-height: 60vh; padding-top: 120px;">
+        <!-- Product detail will be rendered here by JS -->
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-brand"><a href="index.html" class="logo">
+                    <img src="galeri/sia.png" alt="Sia Moda Evi"
+                        style="height:65px;width:auto;object-fit:contain;filter:brightness(0) invert(1);">
+                </a>
+                <p data-i18n="footerDesc">Her kadının özel hissetmesi gereken anlar için.</p>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/siamodaevi?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/profile.php?id=100075947840451#" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4 data-i18n="footerCol1Title">Koleksiyonlar</h4>
+                <ul>
+                    <li><a href="gelinlikler.html" data-i18n="footerGelinlikler">Gelinlikler</a></li>
+                    <li><a href="kinalik.html" data-i18n="footerNisanliklar">Kınalıklar</a></li>
+                    <li><a href="aksesuarlar.html" data-i18n="footerAksesuarlar">Aksesuarlar</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4 data-i18n="footerCol2Title">Şirket</h4>
+                <ul>
+                    <li><a href="hakkimizda.html" data-i18n="footerHakkimizda">Hakkımızda</a></li>
+                    <li><a href="temas.html" data-i18n="footerIletisim">İletişim</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4 data-i18n="footerCol3Title">Destek</h4>
+                <ul>
+                    <li><a href="#" data-i18n="footerSSS">SSS</a></li>
+                </ul>
+            </div>
+            <div class="footer-col footer-newsletter">
+                <h4 data-i18n="footerCol4Title">Bülten</h4>
+                <p data-i18n="footerBultenDesc">Yeni koleksiyonlardan haberdar olun.</p>
+                <form class="newsletter-form" id="newsletter-form"><input type="email"
+                        data-i18n-placeholder="footerEmailPlaceholder" placeholder="E-posta adresiniz" required><button
+                        type="submit" data-i18n="footerSend">Gönder</button></form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p data-i18n="footerCopyright">&copy; 2026 Sia Moda Evi. Tüm hakları saklıdır.</p>
+            <div class="footer-bottom-links"><a href="#" data-i18n="footerPrivacy">Gizlilik Politikası</a><a href="#"
+                    data-i18n="footerTerms">Kullanım Koşulları</a></div>
+        </div>
+    </footer>
+
+    <script src="products.js"></script>
+    <script src="translations.js"></script>
+    <script>
+        // Uses products[] array from products.js
+        var currentImageIndex = 0;
+        var currentGallery = [];
+
+        function getProductId() {
+            var hash = window.location.hash.replace('#', '');
+            if (hash && !isNaN(hash)) return parseInt(hash);
+            var params = new URLSearchParams(window.location.search);
+            var qid = params.get('id');
+            if (qid && !isNaN(qid)) return parseInt(qid);
+            return null;
+        }
+
+        function setMainImage(index) {
+            currentImageIndex = index;
+            var mainImg = document.getElementById('main-product-image');
+            if (mainImg) {
+                mainImg.style.opacity = '0';
+                setTimeout(function () {
+                    mainImg.src = currentGallery[index];
+                    mainImg.style.opacity = '1';
+                }, 150);
+            }
+            var thumbs = document.querySelectorAll('.detail-thumbnails img');
+            thumbs.forEach(function (thumb, i) {
+                thumb.classList.toggle('active', i === index);
+            });
+        }
+
+        function prevImage() {
+            currentImageIndex = (currentImageIndex - 1 + currentGallery.length) % currentGallery.length;
+            setMainImage(currentImageIndex);
+        }
+
+        function nextImage() {
+            currentImageIndex = (currentImageIndex + 1) % currentGallery.length;
+            setMainImage(currentImageIndex);
+        }
+
+        function renderProduct() {
+            var contentEl = document.getElementById('product-content');
+            var productId = getProductId();
+
+            if (!productId) {
+                contentEl.innerHTML = '<div class="not-found-container"><h2>Ürün Bulunamadı</h2><p>Aradığınız ürün mevcut değil.</p><a href="index.html" class="detail-cta">Ana Sayfaya Dön</a></div>';
+                return;
+            }
+
+            var product = null;
+            for (var i = 0; i < products.length; i++) {
+                if (products[i].id === productId) {
+                    product = products[i];
+                    break;
+                }
+            }
+
+            if (!product) {
+                contentEl.innerHTML = '<div class="not-found-container"><h2>Ürün Bulunamadı</h2><p>Aradığınız ürün mevcut değil.</p><a href="index.html" class="detail-cta">Ana Sayfaya Dön</a></div>';
+                return;
+            }
+
+            // Build full gallery: main image (index 0) + 4 gallery images
+            currentGallery = [product.image];
+            if (product.gallery && product.gallery.length > 0) {
+                for (var j = 0; j < product.gallery.length; j++) {
+                    currentGallery.push(product.gallery[j]);
+                }
+            }
+            currentImageIndex = 0;
+
+            var categoryMap = { gelinlik: 'gelinlikler.html', kinalik: 'kinalik.html', nisanlik: 'kinalik.html', aksesuar: 'aksesuarlar.html' };
+            var categoryNameMap = { gelinlik: 'Gelinlikler', kinalik: 'Kınalıklar', nisanlik: 'Kınalıklar', aksesuar: 'Aksesuarlar' };
+            var backUrl = categoryMap[product.category] || 'index.html';
+            var categoryName = categoryNameMap[product.category] || '';
+
+            // Build thumbnail HTML — all 5 photos (main + 4 gallery)
+            var thumbsHtml = '';
+            for (var k = 0; k < currentGallery.length; k++) {
+                var activeClass = k === 0 ? ' active' : '';
+                thumbsHtml += '<img src="' + currentGallery[k] + '" alt="' + product.name + ' - ' + (k + 1) + '" onclick="setMainImage(' + k + ')" class="' + activeClass.trim() + '">';
+            }
+
+            // Build attributes HTML
+            var attrsHtml = '';
+            var attrs = product.attributes;
+            if (attrs.style) attrsHtml += '<div class="detail-attr"><div class="detail-attr-label">Stil</div><div class="detail-attr-value">' + attrs.style + '</div></div>';
+            if (attrs.color) attrsHtml += '<div class="detail-attr"><div class="detail-attr-label">Renk</div><div class="detail-attr-value">' + attrs.color + '</div></div>';
+            if (attrs.detail) attrsHtml += '<div class="detail-attr"><div class="detail-attr-label">Detay</div><div class="detail-attr-value">' + attrs.detail + '</div></div>';
+            if (attrs.type) attrsHtml += '<div class="detail-attr"><div class="detail-attr-label">Tür</div><div class="detail-attr-value">' + attrs.type + '</div></div>';
+            if (attrs.size) attrsHtml += '<div class="detail-attr"><div class="detail-attr-label">Beden</div><div class="detail-attr-value">' + attrs.size + '</div></div>';
+
+            var badgeHtml = product.badge ? '<span class="detail-badge">' + product.badge + '</span>' : '';
+
+            var breadcrumbHtml =
+                '<nav class="detail-breadcrumb" aria-label="Breadcrumb">' +
+                '<a href="index.html">Ana Sayfa</a>' +
+                '<span class="detail-breadcrumb-sep">/</span>' +
+                '<a href="' + backUrl + '">' + categoryName + '</a>' +
+                '<span class="detail-breadcrumb-sep">/</span>' +
+                '<span>' + product.name + '</span>' +
+                '</nav>';
+
+            contentEl.innerHTML =
+                breadcrumbHtml +
+                '<div class="detail-layout">' +
+                '<div class="detail-gallery">' +
+                '<div class="detail-thumbnails">' + thumbsHtml + '</div>' +
+                '<div class="detail-main-image">' +
+                '<img src="' + currentGallery[0] + '" alt="' + product.name + '" id="main-product-image">' +
+                '<button class="detail-image-nav prev" onclick="prevImage()"><i class="fas fa-chevron-left"></i></button>' +
+                '<button class="detail-image-nav next" onclick="nextImage()"><i class="fas fa-chevron-right"></i></button>' +
+                '</div>' +
+                '</div>' +
+                '<div class="detail-info">' +
+                badgeHtml +
+                '<h1>' + product.name + '</h1>' +
+                '<p class="detail-description">' + product.description + '</p>' +
+                '<div class="detail-attributes">' + attrsHtml + '</div>' +
+                '<a href="randevu.html" class="detail-cta">Randevu Al</a>' +
+                '<a href="' + backUrl + '" class="detail-back-link"><i class="fas fa-arrow-left"></i> ' + categoryName + ' Koleksiyonuna D\u00f6n</a>' +
+                '</div>' +
+                '</div>';
+
+            // Update page title
+            document.title = product.name + ' | Sia Moda Evi';
+        }
+
+        // Run immediately
+        renderProduct();
+    </script>
+    <script src="script.js"></script>
+    <script src="chatbot.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,445 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sia Moda Evi ilham galerisi - Düğün ve gelinlik ilham kaynakları.">
+    <title>Esin | Sia Moda Evi</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="chatbot.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        .esin-masonry {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px 80px;
+            columns: 3;
+            column-gap: 20px;
+        }
+
+        .esin-gallery-item {
+            break-inside: avoid;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .esin-gallery-item img {
+            width: 100%;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .esin-gallery-item:hover img {
+            transform: scale(1.03);
+        }
+
+        .gallery-item-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.4s ease;
+            background: rgba(0, 0, 0, 0);
+        }
+
+        .esin-gallery-item:hover .gallery-item-overlay {
+            background: rgba(0, 0, 0, 0.38);
+        }
+
+        .gallery-item-overlay span {
+            font-family: var(--font-display);
+            color: white;
+            font-size: 1.2rem;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .esin-gallery-item:hover .gallery-item-overlay span {
+            opacity: 1;
+        }
+
+        /* Esin section padding */
+        .esin-intro-section {
+            padding: 80px 40px;
+            text-align: center;
+        }
+
+        /* Mobile */
+        @media (max-width: 1024px) {
+            .esin-masonry {
+                columns: 2;
+                padding: 0 24px 60px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .esin-masonry {
+                columns: 1;
+                padding: 0 14px 48px;
+            }
+
+            .esin-intro-section {
+                padding: 48px 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header class="site-header" id="site-header">
+        <div class="header-top">
+            <div class="header-left"><button class="mobile-menu-btn" id="mobile-menu-btn"
+                    aria-label="Menü"><span></span><span></span><span></span></button></div>
+            <div class="header-center"><a href="index.html" class="logo"><img src="galeri/sia.png" alt="Sia Moda Evi"
+                        style="height:80px;width:auto;object-fit:contain;"></a></div>
+            <div class="header-right">
+                <div class="search-box" id="search-box"><input type="text" data-i18n-placeholder="searchPlaceholder"
+                        placeholder="Ürün ara..." id="search-input"><button class="search-btn" id="search-btn"
+                        aria-label="Ara"><i class="fas fa-search"></i></button></div>
+                <div class="lang-selector"><button class="lang-btn" id="lang-btn"><i class="fas fa-globe"></i> TR <i
+                            class="fas fa-chevron-down" style="font-size:0.5rem"></i></button>
+                    <div class="lang-dropdown" id="lang-dropdown"><a href="#" data-lang="tr">🇹🇷 Türkçe</a><a href="#"
+                            data-lang="en">🇬🇧 English</a><a href="#" data-lang="de">🇩🇪 Deutsch</a><a href="#"
+                            data-lang="ar">🇸🇦 العربية</a></div>
+                </div>
+                <a href="randevu.html" class="btn-appointment" data-i18n="appointment">Randevu Al</a>
+            </div>
+        </div>
+        <nav class="main-nav" id="main-nav">
+            <ul class="nav-list">
+                <li class="nav-item"><a href="gelinlikler.html" class="nav-link"
+                        data-i18n="navGelinlikler">Gelinlikler</a></li>
+                <li class="nav-item"><a href="kinalik.html" class="nav-link" data-i18n="catNisanlik">Kınalıklar</a>
+                </li>
+                <li class="nav-item"><a href="aksesuarlar.html" class="nav-link"
+                        data-i18n="navAksesuarlar">Aksesuarlar</a></li>
+                <li class="nav-item"><a href="koleksiyonlar.html" class="nav-link"
+                        data-i18n="navKoleksiyonlar">Koleksiyonlar</a></li>
+                <li class="nav-item"><a href="magaza-bulucu.html" class="nav-link" data-i18n="navMagaza">Mağaza</a>
+                </li>
+                <li class="nav-item"><a href="#" class="nav-link" style="color: var(--color-gold);"
+                        data-i18n="navSirket">Şirket <span class="arrow">▼</span></a>
+                    <div class="dropdown-menu"><a href="hakkimizda.html" data-i18n="navHakkimizda">Hakkımızda</a><a
+                            href="temas.html" data-i18n="navTemas">İletişim</a><a href="esin.html"
+                            data-i18n="navEsin">Esin</a></div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="inner-page">
+        <div class="page-hero">
+            <img src="galeri/esin/WhatsApp Image 2026-03-05 at 17.23.20 (3).jpeg" alt="Esin">
+            <div class="hero-overlay"></div>
+            <div class="page-hero-content">
+                <h1 data-i18n="esinTitle">Esin</h1>
+                <p data-i18n="esinSubtitle">Düğününüz için ilham kaynakları</p>
+            </div>
+        </div>
+
+        <section class="esin-intro-section">
+            <div class="animate-on-scroll">
+                <h2 class="section-title" data-i18n="ilhamGalerisi">İlham Galerisi</h2>
+                <div class="gold-line"></div>
+                <p class="section-subtitle" data-i18n="ilhamSubtitle">Gelinlerimizden ve çekimlerimizden en güzel
+                    kareler</p>
+            </div>
+        </section>
+
+        <!-- Masonry Gallery -->
+        <div class="esin-masonry">
+
+            <div class="esin-gallery-item animate-on-scroll">
+                <img src="galeri/esin/WhatsApp Image 2026-03-05 at 17.23.17.jpeg" alt="Sia Moda Evi Esin">
+                <div class="gallery-item-overlay"><span>✦ Zarif Romantik</span></div>
+            </div>
+
+            <div class="esin-gallery-item animate-on-scroll">
+                <img src="galeri/esin/WhatsApp Image 2026-03-05 at 17.23.18 (1).jpeg" alt="Sia Moda Evi Esin">
+                <div class="gallery-item-overlay"><span>✦ Asil Duruş</span></div>
+            </div>
+
+            <div class="esin-gallery-item animate-on-scroll">
+                <img src="galeri/esin/WhatsApp Image 2026-03-05 at 17.23.18.jpeg" alt="Sia Moda Evi Esin">
+                <div class="gallery-item-overlay"><span>✦ Klasik Zarafet</span></div>
+            </div>
+
+            <div class="esin-gallery-item animate-on-scroll">
+                <img src="galeri/esin/WhatsApp Image 2026-03-05 at 17.23.19 (1).jpeg" alt="Sia Moda Evi Esin">
+                <div class="gallery-item-overlay"><span>✦ Modern Şıklık</span></div>
+            </div>
+
+            <div class="esin-gallery-item animate-on-scroll">
+                <img src="galeri/esin/WhatsApp Image 2026-03-05 at 17.23.19.jpeg" alt="Sia Moda Evi Esin">
+                <div class="gallery-item-overlay"><span>✦ Prenses Rüyası</span></div>
+            </div>
+
+            <div class="esin-gallery-item animate-on-scroll">
+                <img src="galeri/esin/WhatsApp Image 2026-03-05 at 17.23.20 (1).jpeg" alt="Sia Moda Evi Esin">
+                <div class="gallery-item-overlay"><span>✦ Büyüleyici Gece</span></div>
+            </div>
+
+            <div class="esin-gallery-item animate-on-scroll">
+                <img src="galeri/esin/WhatsApp Image 2026-03-05 at 17.23.20 (2).jpeg" alt="Sia Moda Evi Esin">
+                <div class="gallery-item-overlay"><span>✦ Doğal Güzellik</span></div>
+            </div>
+
+            <div class="esin-gallery-item animate-on-scroll">
+                <img src="galeri/esin/WhatsApp Image 2026-03-05 at 17.23.20 (3).jpeg" alt="Sia Moda Evi Esin">
+                <div class="gallery-item-overlay"><span>✦ İnce İşçilik</span></div>
+            </div>
+
+            <div class="esin-gallery-item animate-on-scroll">
+                <img src="galeri/esin/WhatsApp Image 2026-03-05 at 17.23.20 (4).jpeg" alt="Sia Moda Evi Esin">
+                <div class="gallery-item-overlay"><span>✦ Düğün Anı</span></div>
+            </div>
+
+            <div class="esin-gallery-item animate-on-scroll">
+                <img src="galeri/esin/WhatsApp Image 2026-03-05 at 17.23.20 (5).jpeg" alt="Sia Moda Evi Esin">
+                <div class="gallery-item-overlay"><span>✦ Saf Beyaz</span></div>
+            </div>
+
+            <div class="esin-gallery-item animate-on-scroll">
+                <img src="galeri/esin/WhatsApp Image 2026-03-05 at 17.23.20 (6).jpeg" alt="Sia Moda Evi Esin">
+                <div class="gallery-item-overlay"><span>✦ Dantel Detay</span></div>
+            </div>
+
+            <div class="esin-gallery-item animate-on-scroll">
+                <img src="galeri/esin/WhatsApp Image 2026-03-05 at 17.23.20.jpeg" alt="Sia Moda Evi Esin">
+                <div class="gallery-item-overlay"><span>✦ Zarif Prenses</span></div>
+            </div>
+
+            <div class="esin-gallery-item animate-on-scroll">
+                <img src="galeri/esin/WhatsApp Image 2026-03-05 at 17.23.21 (1).jpeg" alt="Sia Moda Evi Esin">
+                <div class="gallery-item-overlay"><span>✦ Romantik Detay</span></div>
+            </div>
+
+            <div class="esin-gallery-item animate-on-scroll">
+                <img src="galeri/esin/WhatsApp Image 2026-03-05 at 17.23.21 (2).jpeg" alt="Sia Moda Evi Esin">
+                <div class="gallery-item-overlay"><span>✦ Minimalist</span></div>
+            </div>
+
+            <div class="esin-gallery-item animate-on-scroll">
+                <img src="galeri/esin/WhatsApp Image 2026-03-05 at 17.23.21 (3).jpeg" alt="Sia Moda Evi Esin">
+                <div class="gallery-item-overlay"><span>✦ Kına Gecesi</span></div>
+            </div>
+
+            <div class="esin-gallery-item animate-on-scroll">
+                <img src="galeri/esin/WhatsApp Image 2026-03-05 at 17.23.21 (4).jpeg" alt="Sia Moda Evi Esin">
+                <div class="gallery-item-overlay"><span>✦ Büyüleyici</span></div>
+            </div>
+
+            <div class="esin-gallery-item animate-on-scroll">
+                <img src="galeri/esin/WhatsApp Image 2026-03-05 at 17.23.21 (5).jpeg" alt="Sia Moda Evi Esin">
+                <div class="gallery-item-overlay"><span>✦ Asil Zarafet</span></div>
+            </div>
+
+            <div class="esin-gallery-item animate-on-scroll">
+                <img src="galeri/esin/WhatsApp Image 2026-03-05 at 17.23.21 (6).jpeg" alt="Sia Moda Evi Esin">
+                <div class="gallery-item-overlay"><span>✦ Hayaller</span></div>
+            </div>
+
+            <div class="esin-gallery-item animate-on-scroll">
+                <img src="galeri/esin/WhatsApp Image 2026-03-05 at 17.23.21 (7).jpeg" alt="Sia Moda Evi Esin">
+                <div class="gallery-item-overlay"><span>✦ Işık ve Zarafet</span></div>
+            </div>
+
+            <div class="esin-gallery-item animate-on-scroll">
+                <img src="galeri/esin/WhatsApp Image 2026-03-05 at 17.23.21.jpeg" alt="Sia Moda Evi Esin">
+                <div class="gallery-item-overlay"><span>✦ Altın Anlar</span></div>
+            </div>
+
+            <div class="esin-gallery-item animate-on-scroll">
+                <img src="galeri/esin/WhatsApp Image 2026-03-05 at 17.23.22 (1).jpeg" alt="Sia Moda Evi Esin">
+                <div class="gallery-item-overlay"><span>✦ Nişan Gecesi</span></div>
+            </div>
+
+            <div class="esin-gallery-item animate-on-scroll">
+                <img src="galeri/esin/WhatsApp Image 2026-03-05 at 17.23.22 (2).jpeg" alt="Sia Moda Evi Esin">
+                <div class="gallery-item-overlay"><span>✦ Sonsuzluk</span></div>
+            </div>
+
+            <div class="esin-gallery-item animate-on-scroll">
+                <img src="galeri/esin/WhatsApp Image 2026-03-05 at 17.23.22 (3).jpeg" alt="Sia Moda Evi Esin">
+                <div class="gallery-item-overlay"><span>✦ İhtişamlı</span></div>
+            </div>
+
+            <div class="esin-gallery-item animate-on-scroll">
+                <img src="galeri/esin/WhatsApp Image 2026-03-05 at 17.23.22 (4).jpeg" alt="Sia Moda Evi Esin">
+                <div class="gallery-item-overlay"><span>✦ Beyaz Rüya</span></div>
+            </div>
+
+            <div class="esin-gallery-item animate-on-scroll">
+                <img src="galeri/esin/WhatsApp Image 2026-03-05 at 17.23.22 (5).jpeg" alt="Sia Moda Evi Esin">
+                <div class="gallery-item-overlay"><span>✦ Özel Tasarım</span></div>
+            </div>
+
+            <div class="esin-gallery-item animate-on-scroll">
+                <img src="galeri/esin/WhatsApp Image 2026-03-05 at 17.23.22 (6).jpeg" alt="Sia Moda Evi Esin">
+                <div class="gallery-item-overlay"><span>✦ Gelin Anı</span></div>
+            </div>
+
+            <div class="esin-gallery-item animate-on-scroll">
+                <img src="galeri/esin/WhatsApp Image 2026-03-05 at 17.23.22.jpeg" alt="Sia Moda Evi Esin">
+                <div class="gallery-item-overlay"><span>✦ Zarafet</span></div>
+            </div>
+
+            <div class="esin-gallery-item animate-on-scroll">
+                <img src="galeri/esin/WhatsApp Image 2026-03-05 at 17.23.23 (1).jpeg" alt="Sia Moda Evi Esin">
+                <div class="gallery-item-overlay"><span>✦ Muhteşem An</span></div>
+            </div>
+
+            <div class="esin-gallery-item animate-on-scroll">
+                <img src="galeri/esin/WhatsApp Image 2026-03-05 at 17.23.23 (2).jpeg" alt="Sia Moda Evi Esin">
+                <div class="gallery-item-overlay"><span>✦ Güzellik</span></div>
+            </div>
+
+            <div class="esin-gallery-item animate-on-scroll">
+                <img src="galeri/esin/WhatsApp Image 2026-03-05 at 17.23.23 (3).jpeg" alt="Sia Moda Evi Esin">
+                <div class="gallery-item-overlay"><span>✦ Işıltı</span></div>
+            </div>
+
+            <div class="esin-gallery-item animate-on-scroll">
+                <img src="galeri/esin/WhatsApp Image 2026-03-05 at 17.23.23 (4).jpeg" alt="Sia Moda Evi Esin">
+                <div class="gallery-item-overlay"><span>✦ Kadife Dokunuş</span></div>
+            </div>
+
+            <div class="esin-gallery-item animate-on-scroll">
+                <img src="galeri/esin/WhatsApp Image 2026-03-05 at 17.23.23 (5).jpeg" alt="Sia Moda Evi Esin">
+                <div class="gallery-item-overlay"><span>✦ Şiirsel</span></div>
+            </div>
+
+            <div class="esin-gallery-item animate-on-scroll">
+                <img src="galeri/esin/WhatsApp Image 2026-03-05 at 17.23.23 (6).jpeg" alt="Sia Moda Evi Esin">
+                <div class="gallery-item-overlay"><span>✦ Sihirli An</span></div>
+            </div>
+
+            <div class="esin-gallery-item animate-on-scroll">
+                <img src="galeri/esin/WhatsApp Image 2026-03-05 at 17.23.23 (7).jpeg" alt="Sia Moda Evi Esin">
+                <div class="gallery-item-overlay"><span>✦ Pembe Düşler</span></div>
+            </div>
+
+            <div class="esin-gallery-item animate-on-scroll">
+                <img src="galeri/esin/WhatsApp Image 2026-03-05 at 17.23.23 (8).jpeg" alt="Sia Moda Evi Esin">
+                <div class="gallery-item-overlay"><span>✦ Efsanevi</span></div>
+            </div>
+
+            <div class="esin-gallery-item animate-on-scroll">
+                <img src="galeri/esin/WhatsApp Image 2026-03-05 at 17.23.23.jpeg" alt="Sia Moda Evi Esin">
+                <div class="gallery-item-overlay"><span>✦ Doğa ve Zarafet</span></div>
+            </div>
+
+            <div class="esin-gallery-item animate-on-scroll">
+                <img src="galeri/esin/WhatsApp Image 2026-03-05 at 17.23.24 (1).jpeg" alt="Sia Moda Evi Esin">
+                <div class="gallery-item-overlay"><span>✦ Yeni Başlangıç</span></div>
+            </div>
+
+            <div class="esin-gallery-item animate-on-scroll">
+                <img src="galeri/esin/WhatsApp Image 2026-03-05 at 17.23.24 (2).jpeg" alt="Sia Moda Evi Esin">
+                <div class="gallery-item-overlay"><span>✦ Mutluluk</span></div>
+            </div>
+
+            <div class="esin-gallery-item animate-on-scroll">
+                <img src="galeri/esin/WhatsApp Image 2026-03-05 at 17.23.24 (3).jpeg" alt="Sia Moda Evi Esin">
+                <div class="gallery-item-overlay"><span>✦ Saf Aşk</span></div>
+            </div>
+
+            <div class="esin-gallery-item animate-on-scroll">
+                <img src="galeri/esin/WhatsApp Image 2026-03-05 at 17.23.24 (4).jpeg" alt="Sia Moda Evi Esin">
+                <div class="gallery-item-overlay"><span>✦ Çiçekli Rüya</span></div>
+            </div>
+
+            <div class="esin-gallery-item animate-on-scroll">
+                <img src="galeri/esin/WhatsApp Image 2026-03-05 at 17.23.24 (5).jpeg" alt="Sia Moda Evi Esin">
+                <div class="gallery-item-overlay"><span>✦ Altın Işık</span></div>
+            </div>
+
+            <div class="esin-gallery-item animate-on-scroll">
+                <img src="galeri/esin/WhatsApp Image 2026-03-05 at 17.23.24 (6).jpeg" alt="Sia Moda Evi Esin">
+                <div class="gallery-item-overlay"><span>✦ Romantik Anlar</span></div>
+            </div>
+
+            <div class="esin-gallery-item animate-on-scroll">
+                <img src="galeri/esin/WhatsApp Image 2026-03-05 at 17.23.24.jpeg" alt="Sia Moda Evi Esin">
+                <div class="gallery-item-overlay"><span>✦ Ömür Boyu</span></div>
+            </div>
+
+        </div>
+
+        <!-- CTA -->
+        <section style="padding: 100px 40px; text-align: center; background: var(--color-bg-alt);">
+            <div class="animate-on-scroll">
+                <h2 class="section-title" data-i18n="hayalTitle">Hayalinizi <span
+                        class="gold-text">Gerçekleştirin</span></h2>
+                <div class="gold-line"></div>
+                <p class="section-subtitle" style="max-width: 600px;" data-i18n="hayalDesc">Sia Moda Evi'nde
+                    hayalinizdeki gelinliğe kavuşmak için randevu alın.</p>
+                <a href="randevu.html"
+                    style="display: inline-block; margin-top: 40px; padding: 16px 50px; font-family: var(--font-ui); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-bg); background: var(--color-gold); transition: all 0.4s ease;"
+                    data-i18n="hayalBtn">Randevu Alın</a>
+            </div>
+        </section>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-brand"><a href="index.html" class="logo">
+                    <img src="galeri/sia.png" alt="Sia Moda Evi"
+                        style="height:65px;width:auto;object-fit:contain;filter:brightness(0) invert(1);">
+                </a>
+                <p data-i18n="footerDesc">Her kadının özel hissetmesi gereken anlar için.</p>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/siamodaevi?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                        target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/profile.php?id=100075947840451#" target="_blank" rel="noopener"
+                        aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4 data-i18n="footerCol1Title">Koleksiyonlar</h4>
+                <ul>
+                    <li><a href="gelinlikler.html" data-i18n="footerGelinlikler">Gelinlikler</a></li>
+                    <li><a href="kinalik.html" data-i18n="footerNisanliklar">Kınalıklar</a></li>
+                    <li><a href="aksesuarlar.html" data-i18n="footerAksesuarlar">Aksesuarlar</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4 data-i18n="footerCol2Title">Şirket</h4>
+                <ul>
+                    <li><a href="hakkimizda.html" data-i18n="footerHakkimizda">Hakkımızda</a></li>
+                    <li><a href="temas.html" data-i18n="footerIletisim">İletişim</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4 data-i18n="footerCol3Title">Destek</h4>
+                <ul>
+                    <li><a href="#" data-i18n="footerSSS">SSS</a></li>
+                </ul>
+            </div>
+            <div class="footer-col footer-newsletter">
+                <h4 data-i18n="footerCol4Title">Bülten</h4>
+                <p data-i18n="footerBultenDesc">Yeni koleksiyonlardan haberdar olun.</p>
+                <form class="newsletter-form" id="newsletter-form"><input type="email"
+                        data-i18n-placeholder="footerEmailPlaceholder" placeholder="E-posta adresiniz" required><button
+                        type="submit" data-i18n="footerSend">Gönder</button></form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p data-i18n="footerCopyright">&copy; 2026 Sia Moda Evi. Tüm hakları saklıdır.</p>
+            <div class="footer-bottom-links"><a href="#" data-i18n="footerPrivacy">Gizlilik Politikası</a><a href="#"
+                    data-i18n="footerTerms">Kullanım Koşulları</a></div>
+        </div>
+    </footer>
+    <script src="translations.js"></script>
+    <script src="script.js"></script>
+    <script src="chatbot.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,212 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sia Moda Evi Kınalık koleksiyonu - Zarif ve şik Kınalıklar.">
+    <title>Kınalıklar | Sia Moda Evi</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="chatbot.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header class="site-header" id="site-header">
+        <div class="header-top">
+            <div class="header-left"><button class="mobile-menu-btn" id="mobile-menu-btn"
+                    aria-label="Menü"><span></span><span></span><span></span></button></div>
+            <div class="header-center"><a href="index.html" class="logo"><img src="galeri/sia.png" alt="Sia Moda Evi"
+                        style="height:80px;width:auto;object-fit:contain;"></a></div>
+            <div class="header-right">
+                <div class="search-box" id="search-box"><input type="text" data-i18n-placeholder="searchPlaceholder"
+                        placeholder="Ürün ara..." id="search-input"><button class="search-btn" id="search-btn"
+                        aria-label="Ara"><i class="fas fa-search"></i></button></div>
+                <div class="lang-selector"><button class="lang-btn" id="lang-btn"><i class="fas fa-globe"></i> TR <i
+                            class="fas fa-chevron-down" style="font-size:0.5rem"></i></button>
+                    <div class="lang-dropdown" id="lang-dropdown"><a href="#" data-lang="tr">🇹🇷 Türkçe</a><a href="#"
+                            data-lang="en">🇬🇧 English</a><a href="#" data-lang="de">🇩🇪 Deutsch</a><a href="#"
+                            data-lang="ar">🇸🇦 العربية</a></div>
+                </div>
+                <a href="randevu.html" class="btn-appointment" data-i18n="appointment">Randevu Al</a>
+            </div>
+        </div>
+        <nav class="main-nav" id="main-nav">
+            <ul class="nav-list">
+                <li class="nav-item"><a href="gelinlikler.html" class="nav-link"
+                        data-i18n="navGelinlikler">Gelinlikler</a></li>
+                <li class="nav-item"><a href="kinalik.html" class="nav-link" style="color: var(--color-gold);"
+                        data-i18n="catNisanlik">Kınalıklar</a>
+                </li>
+                <li class="nav-item"><a href="aksesuarlar.html" class="nav-link"
+                        data-i18n="navAksesuarlar">Aksesuarlar</a></li>
+                <li class="nav-item"><a href="koleksiyonlar.html" class="nav-link"
+                        data-i18n="navKoleksiyonlar">Koleksiyonlar</a></li>
+                <li class="nav-item"><a href="magaza-bulucu.html" class="nav-link" data-i18n="navMagaza">Mağaza</a></li>
+                <li class="nav-item"><a href="#" class="nav-link" data-i18n="navSirket">Şirket <span
+                            class="arrow">▼</span></a>
+                    <div class="dropdown-menu"><a href="hakkimizda.html" data-i18n="navHakkimizda">Hakkımızda</a><a
+                            href="temas.html" data-i18n="navTemas">İletişim</a><a href="esin.html"
+                            data-i18n="navEsin">Esin</a></div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- PAGE HEADER -->
+    <div class="page-header">
+        <h1 data-i18n="nisanlikTitle">Kınalıklar</h1>
+        <div class="breadcrumb">
+            <a href="index.html" data-i18n="nisanlikBreadcrumb">Ana Sayfa</a>
+            <span class="separator">/</span>
+            <span data-i18n="nisanlikTitle">Kınalıklar</span>
+        </div>
+    </div>
+
+    <!-- PRODUCT LAYOUT -->
+    <div class="product-layout">
+        <aside class="filter-sidebar">
+            <div class="filter-header">
+                <div class="filter-header-top">
+                    <h3 data-i18n="filterTitle">Filtreler</h3>
+                    <button class="filter-toggle-btn" id="filter-toggle-btn" aria-label="Filtreleri Göster/Gizle"><i
+                            class="fas fa-sliders-h"></i> <span class="filter-toggle-text">Filtrele</span> <i
+                            class="fas fa-chevron-down filter-toggle-icon"></i></button>
+                </div>
+                <button class="filter-clear" data-i18n="filterClear">Temizle</button>
+            </div>
+            <div class="filter-sidebar-body" id="filter-sidebar-body">
+                <div class="filter-group" data-filter="stil">
+                    <h4><span data-i18n="filterStyle">Stil</span> <span class="toggle-icon">▼</span></h4>
+                    <div class="filter-options">
+                        <label class="filter-option"><input type="checkbox" value="a-line"> A-Line</label>
+                        <label class="filter-option"><input type="checkbox" value="balik"> Balık</label>
+                        <label class="filter-option"><input type="checkbox" value="empire"> Empire</label>
+                        <label class="filter-option"><input type="checkbox" value="kalem"> Kalem</label>
+                    </div>
+                </div>
+
+                <div class="filter-group" data-filter="renk">
+                    <h4><span data-i18n="filterColor">Renk</span> <span class="toggle-icon">▼</span></h4>
+                    <div class="filter-options">
+                        <label class="filter-option"><input type="checkbox" value="pembe"> Pembe</label>
+                        <label class="filter-option"><input type="checkbox" value="lila"> Lila</label>
+                        <label class="filter-option"><input type="checkbox" value="mint"> Mint</label>
+                        <label class="filter-option"><input type="checkbox" value="sampanya"> Şampanya</label>
+                        <label class="filter-option"><input type="checkbox" value="lavanta"> Lavanta</label>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- PRODUCTS GRID -->
+        <div>
+            <div class="product-grid-header">
+                <span class="product-count">0 ürün gösteriliyor</span>
+                <select class="sort-select" onchange="sortProducts(this.value)">
+                    <option value="" data-i18n="sortLabel">Sırala</option>
+                    <option value="name-asc" data-i18n="sortNameAsc">İsim: A-Z</option>
+                    <option value="name-desc">İsim: Z-A</option>
+                </select>
+            </div>
+            <div class="products-grid" id="products-grid"></div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-brand"><a href="index.html" class="logo">
+                    <img src="galeri/sia.png" alt="Sia Moda Evi"
+                        style="height:65px;width:auto;object-fit:contain;filter:brightness(0) invert(1);">
+                </a>
+                <p data-i18n="footerDesc">Her kadının özel hissetmesi gereken anlar için tasarlanmış koleksiyonlar.</p>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/siamodaevi?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                        target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/profile.php?id=100075947840451#" target="_blank" rel="noopener"
+                        aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4 data-i18n="footerCol1Title">Koleksiyonlar</h4>
+                <ul>
+                    <li><a href="gelinlikler.html" data-i18n="footerGelinlikler">Gelinlikler</a></li>
+                    <li><a href="kinalik.html" data-i18n="footerNisanliklar">Kınalıklar</a></li>
+                    <li><a href="aksesuarlar.html" data-i18n="footerAksesuarlar">Aksesuarlar</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4 data-i18n="footerCol2Title">Şirket</h4>
+                <ul>
+                    <li><a href="hakkimizda.html" data-i18n="footerHakkimizda">Hakkımızda</a></li>
+                    <li><a href="temas.html" data-i18n="footerIletisim">İletişim</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4 data-i18n="footerCol3Title">Destek</h4>
+                <ul>
+                    <li><a href="#" data-i18n="footerSSS">SSS</a></li>
+                </ul>
+            </div>
+            <div class="footer-col footer-newsletter">
+                <h4 data-i18n="footerCol4Title">Bülten</h4>
+                <p data-i18n="footerBultenDesc">Yeni koleksiyonlardan haberdar olun.</p>
+                <form class="newsletter-form" id="newsletter-form"><input type="email"
+                        data-i18n-placeholder="footerEmailPlaceholder" placeholder="E-posta adresiniz" required><button
+                        type="submit" data-i18n="footerSend">Gönder</button></form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p data-i18n="footerCopyright">&copy; 2026 Sia Moda Evi. Tüm hakları saklıdır.</p>
+            <div class="footer-bottom-links"><a href="#" data-i18n="footerPrivacy">Gizlilik Politikası</a><a href="#"
+                    data-i18n="footerTerms">Kullanım Koşulları</a></div>
+        </div>
+    </footer>
+
+    <script src="products.js"></script>
+    <script src="translations.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const grid = document.getElementById('products-grid');
+            const filteredProducts = products.filter(p => p.category === 'kinalik');
+
+            function normalize(str) {
+                return str.toLowerCase().replace(/ğ/g, 'g').replace(/ü/g, 'u').replace(/ş/g, 's').replace(/ı/g, 'i').replace(/ö/g, 'o').replace(/ç/g, 'c').replace(/ /g, '-');
+            }
+
+            const html = filteredProducts.map(product => {
+                const style = normalize(product.attributes.style || '');
+                const color = normalize(product.attributes.color || '');
+
+                return `
+                <div class="product-card" 
+                     onclick="window.location.href='detay.html#${product.id}'"
+                     style="cursor: pointer;"
+                     data-stil="${style}" 
+                     data-renk="${color}" 
+                     data-name="${product.name}">
+                    <div class="product-card-image">
+                        <img src="${product.image}" alt="${product.name} K\u0131nal\u0131k">
+                        ${product.badge ? `<span class="product-card-badge">${product.badge}</span>` : ''}
+                        <div class="product-card-actions"><button class="quick-view" data-i18n="quickView">Hızlı Bakış</button></div>
+                    </div>
+                    <div class="product-card-info">
+                        <h3>${product.name}</h3>
+                        <p class="product-style">${product.attributes.style} • ${product.attributes.color}</p>
+                    </div>
+                </div>`;
+            }).join('');
+
+            grid.innerHTML = html;
+
+            const countEl = document.querySelector('.product-count');
+            if (countEl) countEl.textContent = `${filteredProducts.length} ${typeof t === 'function' ? t('productCount') : 'ürün gösteriliyor'}`;
+        });
+    </script>
+    <script src="script.js"></script>
+    <script src="chatbot.js"></script>
+</body>
+
+</html>

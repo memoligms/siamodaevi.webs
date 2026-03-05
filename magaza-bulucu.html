@@ -1,0 +1,310 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sia Moda Evi mağazamız - Bizi ziyaret edin.">
+    <title>Mağaza | Sia Moda Evi</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="chatbot.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        .store-single-layout {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 40px 80px;
+        }
+
+        .store-main-card {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+            margin-bottom: 50px;
+        }
+
+        .store-info-section {
+            padding: 50px;
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border-light);
+            border-radius: var(--radius-md);
+        }
+
+        .store-info-section h2 {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 400;
+            color: var(--color-white);
+            margin-bottom: 10px;
+        }
+
+        .store-detail-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+            padding: 18px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--color-border-light);
+            border-radius: var(--radius-md);
+            transition: all var(--transition-medium);
+        }
+
+        .store-detail-item:hover {
+            border-color: var(--color-border);
+            background: rgba(201, 169, 110, 0.05);
+        }
+
+        .store-detail-item i {
+            font-size: 1.3rem;
+            color: var(--color-gold);
+            min-width: 30px;
+            text-align: center;
+        }
+
+        .store-detail-item span {
+            font-family: var(--font-body);
+            font-size: 1.05rem;
+            color: var(--color-text-muted);
+        }
+
+        .store-hours {
+            margin-top: 30px;
+        }
+
+        .store-hours h3 {
+            font-family: var(--font-ui);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--color-gold);
+            margin-bottom: 15px;
+        }
+
+        .store-hours p {
+            font-family: var(--font-body);
+            font-size: 1rem;
+            color: var(--color-text-muted);
+            margin-bottom: 8px;
+        }
+
+        .store-map-preview {
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            height: 100%;
+            min-height: 450px;
+            border: 1px solid var(--color-border-light);
+        }
+
+        .store-map-preview iframe {
+            width: 100%;
+            height: 100%;
+            min-height: 450px;
+            border: none;
+        }
+
+        .store-map-full {
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            border: 1px solid var(--color-border-light);
+        }
+
+        .store-map-full iframe {
+            width: 100%;
+            height: 500px;
+            border: none;
+        }
+
+        .store-cta {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .store-cta a {
+            display: inline-block;
+            padding: 16px 50px;
+            font-family: var(--font-ui);
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--color-bg);
+            background: var(--color-gold);
+            transition: all var(--transition-medium);
+        }
+
+        .store-cta a:hover {
+            background: var(--color-gold-light);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 40px rgba(201, 169, 110, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .store-main-card {
+                grid-template-columns: 1fr;
+            }
+
+            .store-info-section {
+                padding: 30px;
+            }
+
+            .store-single-layout {
+                padding: 30px 20px 60px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header class="site-header" id="site-header">
+        <div class="header-top">
+            <div class="header-left"><button class="mobile-menu-btn" id="mobile-menu-btn"
+                    aria-label="Menü"><span></span><span></span><span></span></button></div>
+            <div class="header-center"><a href="index.html" class="logo"><img src="galeri/sia.png" alt="Sia Moda Evi" style="height:80px;width:auto;object-fit:contain;"></a></div>
+            <div class="header-right">
+                <div class="search-box" id="search-box"><input type="text" data-i18n-placeholder="searchPlaceholder"
+                        placeholder="Ürün ara..." id="search-input"><button class="search-btn" id="search-btn"
+                        aria-label="Ara"><i class="fas fa-search"></i></button></div>
+                <div class="lang-selector"><button class="lang-btn" id="lang-btn"><i class="fas fa-globe"></i> TR <i
+                            class="fas fa-chevron-down" style="font-size:0.5rem"></i></button>
+                    <div class="lang-dropdown" id="lang-dropdown"><a href="#" data-lang="tr">🇹🇷 Türkçe</a><a href="#"
+                            data-lang="en">🇬🇧 English</a><a href="#" data-lang="de">🇩🇪 Deutsch</a><a href="#"
+                            data-lang="ar">🇸🇦 العربية</a></div>
+                </div>
+                <a href="randevu.html" class="btn-appointment" data-i18n="appointment">Randevu Al</a>
+            </div>
+        </div>
+        <nav class="main-nav" id="main-nav">
+            <ul class="nav-list">
+                <li class="nav-item"><a href="gelinlikler.html" class="nav-link"
+                        data-i18n="navGelinlikler">Gelinlikler</a></li>
+                <li class="nav-item"><a href="kinalik.html" class="nav-link" data-i18n="catNisanlik">Kınalıklar</a>
+                </li>
+                <li class="nav-item"><a href="aksesuarlar.html" class="nav-link"
+                        data-i18n="navAksesuarlar">Aksesuarlar</a></li>
+                <li class="nav-item"><a href="koleksiyonlar.html" class="nav-link"
+                        data-i18n="navKoleksiyonlar">Koleksiyonlar</a></li>
+                <li class="nav-item"><a href="magaza-bulucu.html" class="nav-link" style="color: var(--color-gold);"
+                        data-i18n="navMagaza">Mağaza</a></li>
+                <li class="nav-item"><a href="#" class="nav-link" data-i18n="navSirket">Şirket <span
+                            class="arrow">▼</span></a>
+                    <div class="dropdown-menu"><a href="hakkimizda.html" data-i18n="navHakkimizda">Hakkımızda</a><a
+                            href="temas.html" data-i18n="navTemas">İletişim</a><a href="esin.html"
+                            data-i18n="navEsin">Esin</a></div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="inner-page">
+        <div class="page-hero">
+            <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1920&q=80" alt="Mağazamız">
+            <div class="hero-overlay"></div>
+            <div class="page-hero-content">
+                <h1 data-i18n="magazaTitle">Mağazamız</h1>
+                <p data-i18n="magazaSubtitle">Sia Moda Evi'ni ziyaret edin</p>
+            </div>
+        </div>
+
+        <div class="store-single-layout">
+            <div class="store-main-card animate-on-scroll">
+                <div class="store-info-section">
+                    <h2 data-i18n="magazaName">Sia Moda Evi - Bahçelievler</h2>
+                    <div class="gold-line" style="margin: 15px 0 30px; margin-left: 0;"></div>
+
+                    <div class="store-detail-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Mareşal Fevzi Çakmak 4. Sk. No:1kat.2 34188 Bahçelievler İstanbul Türkiye Istanbul,
+                            Turkey</span>
+                    </div>
+                    <div class="store-detail-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+905456538272</span>
+                    </div>
+                    <div class="store-detail-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>aysekeklik1073@gmail.com</span>
+                    </div>
+
+                    <div class="store-hours">
+                        <h3 data-i18n="magazaHoursTitle">Çalışma Saatleri</h3>
+                        <p data-i18n="magazaWeekdays">Her gün: 10:00 - 19:00</p>
+                    </div>
+
+                    <div class="store-cta" style="text-align: left; margin-top: 30px;">
+                        <a href="https://maps.google.com/?q=Mareşal+Fevzi+Çakmak+4.+Sk.+No:1+kat.2+34188+Bahçelievler+İstanbul"
+                            target="_blank" data-i18n="magazaDirections">Yol Tarifi Al</a>
+                    </div>
+                </div>
+
+                <div class="store-map-preview">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d51049.54842429127!2d28.80083563118489!3d40.991939607726096!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14caa4a780c9f5b3%3A0x57160eb58718bae2!2s%C5%9Eirinevler%2C%20Mare%C5%9Fal%20Fevzi%20%C3%87akmak%204.%20Sk.%20No%201%20kat.2%2C%2034188%20Bah%C3%A7elievler%2F%C4%B0stanbul!5e0!3m2!1str!2str!4v1772147076929!5m2!1str!2str"
+                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-brand"><a href="index.html" class="logo">
+                    <img src="galeri/sia.png" alt="Sia Moda Evi" style="height:65px;width:auto;object-fit:contain;filter:brightness(0) invert(1);">
+                </a>
+                <p data-i18n="footerDesc">Her kadının özel hissetmesi gereken anlar için tasarlanmış koleksiyonlar.</p>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/siamodaevi?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/profile.php?id=100075947840451#" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4 data-i18n="footerCol1Title">Koleksiyonlar</h4>
+                <ul>
+                    <li><a href="gelinlikler.html" data-i18n="footerGelinlikler">Gelinlikler</a></li>
+                    <li><a href="kinalik.html" data-i18n="footerNisanliklar">Kınalıklar</a></li>
+                    <li><a href="aksesuarlar.html" data-i18n="footerAksesuarlar">Aksesuarlar</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4 data-i18n="footerCol2Title">Şirket</h4>
+                <ul>
+                    <li><a href="hakkimizda.html" data-i18n="footerHakkimizda">Hakkımızda</a></li>
+                    <li><a href="temas.html" data-i18n="footerIletisim">İletişim</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4 data-i18n="footerCol3Title">Destek</h4>
+                <ul>
+                    <li><a href="#" data-i18n="footerSSS">SSS</a></li>
+                </ul>
+            </div>
+            <div class="footer-col footer-newsletter">
+                <h4 data-i18n="footerCol4Title">Bülten</h4>
+                <p data-i18n="footerBultenDesc">Yeni koleksiyonlardan haberdar olun.</p>
+                <form class="newsletter-form" id="newsletter-form"><input type="email"
+                        data-i18n-placeholder="footerEmailPlaceholder" placeholder="E-posta adresiniz" required><button
+                        type="submit" data-i18n="footerSend">Gönder</button></form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p data-i18n="footerCopyright">&copy; 2026 Sia Moda Evi. Tüm hakları saklıdır.</p>
+            <div class="footer-bottom-links"><a href="#" data-i18n="footerPrivacy">Gizlilik Politikası</a><a href="#"
+                    data-i18n="footerTerms">Kullanım Koşulları</a></div>
+        </div>
+    </footer>
+    <script src="translations.js"></script>
+    <script src="script.js"></script>
+    <script src="chatbot.js"></script>
+</body>
+
+</html>
+
+
+
+
