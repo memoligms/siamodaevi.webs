@@ -23,7 +23,7 @@
         catTitle: "Kendinizi Özel Hissetmeniz İçin Tasarlandı",
         catGelinlik: "Gelinlikler",
         catGelinlikDesc: "Hayalinizdeki gelinliği keşfedin. Her detayı özenle tasarlanmış koleksiyonumuz.",
-        catNisanlikDesc: "Nişanınızı unutulmaz kılacak zarif ve şık tasarımlar.",
+        catNisanlikDesc: "Kınanızı unutulmaz kılacak zarif ve şık tasarımlar.",
         catKesfet: "Keşfet",
         // Process
         processLabel: "Yapılış Süreci",
@@ -100,7 +100,7 @@
         randevuAddress: "Mareşal Fevzi Çakmak 4. Sk. No:1kat.2 34188 Bahçelievler İstanbul Türkiye Istanbul, Turkey",
         randevuPhoneNum: "+905456538272",
         randevuEmailAddr: "aysekeklik1073@gmail.com",
-        randevuHours: "Pazartesi - Cumartesi: 10:00 - 20:00",
+        randevuHours: "Pazartesi - Cumartesi: 10:00 - 19:30",
         // Contact Page
         temasTitle: "İletişim",
         temasSubtitle: "Sizinle iletişime geçmekten mutluluk duyarız",
@@ -152,7 +152,7 @@
         magazaSubtitle: "Sia Moda Evi'ni ziyaret edin",
         magazaName: "Sia Moda Evi - Bahçelievler",
         magazaHoursTitle: "Çalışma Saatleri",
-        magazaWeekdays: "Pazartesi - Cumartesi: 10:00 - 20:00",
+        magazaWeekdays: "Pazartesi - Cumartesi: 10:00 - 19:30",
         magazaSunday: "Pazar: Kapalı",
         magazaDirections: "Yol Tarifi Al"
     },
@@ -170,7 +170,7 @@
         navTemas: "Contact",
         navEsin: "Inspiration",
         navRandevu: "Book Now",
-        catNisanlik: "Engagement Dresses",
+        catNisanlik: "Henna Dresses",
         // Hero
         heroTagline: "Feels Special",
         heroBtn: "Explore Collection",
@@ -180,7 +180,7 @@
         catTitle: "Designed to Make You Feel Special",
         catGelinlik: "Wedding Dresses",
         catGelinlikDesc: "Discover the wedding dress of your dreams. Our carefully designed collection.",
-        catNisanlikDesc: "Elegant and stylish designs to make your engagement unforgettable.",
+        catNisanlikDesc: "Elegant and stylish designs to make your henna night unforgettable.",
         catKesfet: "Explore",
         // Process
         processLabel: "Process",
@@ -205,7 +205,7 @@
         footerCol3Title: "Support",
         footerCol4Title: "Newsletter",
         footerGelinlikler: "Wedding Dresses",
-        footerNisanliklar: "Engagement Dresses",
+        footerNisanliklar: "Henna Dresses",
         footerAksesuarlar: "Accessories",
         footerTumKoleksiyonlar: "All Collections",
         footerHakkimizda: "About Us",
@@ -223,7 +223,7 @@
         // Products Page
         gelinlikTitle: "Wedding Dresses",
         gelinlikBreadcrumb: "Home",
-        nisanlikTitle: "Engagement Dresses",
+        nisanlikTitle: "Henna Dresses",
         nisanlikBreadcrumb: "Home",
         aksesuarTitle: "Accessories",
         aksesuarBreadcrumb: "Home",
@@ -257,7 +257,7 @@
         randevuAddress: "Mareşal Fevzi Çakmak 4. Sk. No:1kat.2 34188 Bahçelievler İstanbul Türkiye Istanbul, Turkey",
         randevuPhoneNum: "+905456538272",
         randevuEmailAddr: "aysekeklik1073@gmail.com",
-        randevuHours: "Monday - Saturday: 10:00 - 20:00",
+        randevuHours: "Monday - Saturday: 10:00 - 19:30",
         // Contact Page
         temasTitle: "Contact",
         temasSubtitle: "We would be happy to hear from you",
@@ -309,7 +309,7 @@
         magazaSubtitle: "Visit Sia Moda Evi",
         magazaName: "Sia Moda Evi - Bahçelievler",
         magazaHoursTitle: "Opening Hours",
-        magazaWeekdays: "Monday - Saturday: 10:00 - 20:00",
+        magazaWeekdays: "Monday - Saturday: 10:00 - 19:30",
         magazaSunday: "Sunday: Closed",
         magazaDirections: "Get Directions"
     },
@@ -327,7 +327,7 @@
         navTemas: "Kontakt",
         navEsin: "Inspiration",
         navRandevu: "Termin",
-        catNisanlik: "Verlobungskleider",
+        catNisanlik: "Henna-Kleider",
         // Hero
         heroTagline: "Fühlt Sich Besonders An",
         heroBtn: "Kollektion Entdecken",
@@ -337,7 +337,7 @@
         catTitle: "Entwickelt, Damit Sie Sich Besonders Fühlen",
         catGelinlik: "Brautkleider",
         catGelinlikDesc: "Entdecken Sie Ihr Traumbrautkleid.",
-        catNisanlikDesc: "Elegante Designs für Ihre Verlobung.",
+        catNisanlikDesc: "Elegante Designs für Ihre Hennafeier.",
         catKesfet: "Entdecken",
         // Footer
         footerCol1Title: "Kollektionen",
@@ -345,7 +345,7 @@
         footerCol3Title: "Support",
         footerCol4Title: "Newsletter",
         footerGelinlikler: "Brautkleider",
-        footerNisanliklar: "Verlobungskleider",
+        footerNisanliklar: "Henna-Kleider",
         footerAksesuarlar: "Accessoires",
         footerTumKoleksiyonlar: "Alle Kollektionen",
         footerHakkimizda: "Über Uns",
@@ -363,7 +363,7 @@
         // Products Page
         gelinlikTitle: "Brautkleider",
         gelinlikBreadcrumb: "Startseite",
-        nisanlikTitle: "Verlobungskleider",
+        nisanlikTitle: "Henna-Kleider",
         nisanlikBreadcrumb: "Startseite",
         aksesuarTitle: "Accessoires",
         aksesuarBreadcrumb: "Startseite",
@@ -397,7 +397,7 @@
         randevuAddress: "Mareşal Fevzi Çakmak 4. Sk. No:1kat.2 34188 Bahçelievler İstanbul Türkiye Istanbul, Turkey",
         randevuPhoneNum: "+905456538272",
         randevuEmailAddr: "aysekeklik1073@gmail.com",
-        randevuHours: "Montag - Samstag: 10:00 - 20:00",
+        randevuHours: "Montag - Samstag: 10:00 - 19:30",
         // Contact Page
         temasTitle: "Kontakt",
         temasSubtitle: "Wir freuen uns, von Ihnen zu hören",
@@ -426,7 +426,7 @@
         magazaSubtitle: "Besuchen Sie Sia Moda Evi",
         magazaName: "Sia Moda Evi - Bahçelievler",
         magazaHoursTitle: "Öffnungszeiten",
-        magazaWeekdays: "Montag - Samstag: 10:00 - 20:00",
+        magazaWeekdays: "Montag - Samstag: 10:00 - 19:30",
         magazaSunday: "Sonntag: Geschlossen",
         magazaDirections: "Anfahrt"
     },
@@ -444,7 +444,7 @@
         navTemas: "اتصل بنا",
         navEsin: "إلهام",
         navRandevu: "حجز موعد",
-        catNisanlik: "فساتين خطوبة",
+        catNisanlik: "فساتين حناء",
         // Hero
         heroTagline: "يشعرك بالتمزي",
         heroBtn: "اكتشف المجموعة",
@@ -454,7 +454,7 @@
         catTitle: "مصمم لتشعري بالتميز",
         catGelinlik: "فساتين زفاف",
         catGelinlikDesc: "اكتشفي فستان زفاف أحلامك.",
-        catNisanlikDesc: "تصاميم أنيقة لخطوبتك.",
+        catNisanlikDesc: "تصاميم أنيقة لليلة حنائك.",
         catKesfet: "اكتشف",
         // Footer
         footerCol1Title: "المجموعات",
@@ -462,7 +462,7 @@
         footerCol3Title: "الدعم",
         footerCol4Title: "النشرة",
         footerGelinlikler: "فساتين زفاف",
-        footerNisanliklar: "فساتين خطوبة",
+        footerNisanliklar: "فساتين حناء",
         footerAksesuarlar: "إكسسوارات",
         footerTumKoleksiyonlar: "جميع المجموعات",
         footerHakkimizda: "من نحن",
@@ -476,7 +476,7 @@
         // Products Page
         gelinlikTitle: "فساتين زفاف",
         gelinlikBreadcrumb: "الرئيسية",
-        nisanlikTitle: "فساتين خطوبة",
+        nisanlikTitle: "فساتين حناء",
         nisanlikBreadcrumb: "الرئيسية",
         aksesuarTitle: "إكسسوارات",
         aksesuarBreadcrumb: "الرئيسية",
@@ -510,7 +510,7 @@
         randevuAddress: "Mareşal Fevzi Çakmak 4. Sk. No:1kat.2 34188 Bahçelievler İstanbul Türkiye Istanbul, Turkey",
         randevuPhoneNum: "+905456538272",
         randevuEmailAddr: "aysekeklik1073@gmail.com",
-        randevuHours: "الاثنين - السبت: 10:00 - 20:00",
+        randevuHours: "الاثنين - السبت: 10:00 - 19:30",
         // Contact Page
         temasTitle: "اتصل بنا",
         temasSubtitle: "يسعدنا التواصل معك",
