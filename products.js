@@ -168,7 +168,7 @@
             "galeri/model18/OMER4741.JPG",
             "galeri/model18/OMER4732.JPG"
         ],
-        "attributes": { "style": "Bohem & zarif", "color": "Pembe", "detail": "3d çiçekler kış tüyleri" },
+        "attributes": { "style": "Bohem & zarif", "color": "Ekru", "detail": "3d çiçekler kış tüyleri" },
         "description": "Doğadan ilham alan 3D çiçekler ve kış tüylerinin romantik birleşimi. Düşük omuz detayıyla omuzlarınıza zarafet katan bu Helen model, bohem stilin en asil halini yansıtıyor."
     },
 
@@ -245,7 +245,7 @@
 
     {
         "id": 18,
-        "name": "Beyaz ÅakayÄ±k",
+        "name": "Gelin Çiçeği",
         "category": "aksesuar",
         "image": "galeri/cicek/WhatsApp Image 2026-02-18 at 14.23.07 (2).jpeg",
         "attributes": { "type": "Çiçek", "color": "Beyaz" },
@@ -320,7 +320,7 @@
     },
     {
         "id": 27,
-        "name": "ÅakayÄ±k GÃ¼l",
+        "name": "Gelin Çiçeği",
         "category": "aksesuar",
         "image": "galeri/cicek/WhatsApp Image 2026-02-18 at 14.23.08 (5).jpeg",
         "attributes": { "type": "Çiçek", "color": "Pembe" },
@@ -379,7 +379,7 @@
     },
     {
         "id": 34,
-        "name": "Sümbül Demeti",
+        "name": "Gül Buketi",
         "category": "aksesuar",
         "image": "galeri/cicek/WhatsApp Image 2026-02-18 at 14.23.09 (11).jpeg",
         "attributes": { "type": "Çiçek", "color": "Mor" },
