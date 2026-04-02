@@ -1,4 +1,4 @@
-﻿const translations = {
+const translations = {
     tr: {
         // Header
         searchPlaceholder: "Ürün ara...",
@@ -128,7 +128,7 @@
         hakkimizdaTitle: "Hakkımızda",
         hakkimizdaSubtitle: "Sia Moda Evi'nin hikayesi",
         hikayeTitle: "Hikayemiz",
-        hikayeP1: "Sia Moda Evi, 2008 yılında İstanbul'da kurulmuş; gelinlik ve özel gün kıyafeti tasarımında 16 yılı aşkın deneyimiyle sektörün güvenilir isimlerinden biri olmuştur. Her gelinliği, sahibinin ruhunu ve hayallerini yansıtan özgün bir sanat eseri olarak tasarlıyoruz. Yüksek terzilik işçiliğini çağdaş çizgilerle buluşturan koleksiyonlarımız; kalite, zarafet ve kişiye özel dokunuşlarla şekillenmektedir. Önceliğimiz yalnızca bir elbise değil; en mutlu gününüze dokunan, ömür boyu hatırlayacağınız bir an yaratmaktır.",
+        hikayeP1: "Sia Moda Evi, 2020 yılında İstanbul'da kurulmuş; gelinlik ve özel gün kıyafeti tasarımında 5 yılı aşkın deneyimiyle sektörün güvenilir isimlerinden biri olmuştur. Her gelinliği, sahibinin ruhunu ve hayallerini yansıtan özgün bir sanat eseri olarak tasarlıyoruz. Yüksek terzilik işçiliğini çağdaş çizgilerle buluşturan koleksiyonlarımız; kalite, zarafet ve kişiye özel dokunuşlarla şekillenmektedir. Önceliğimiz yalnızca bir elbise değil; en mutlu gününüze dokunan, ömür boyu hatırlayacağınız bir an yaratmaktır.",
         hikayeP2: "",
         vizyonTitle: "Vizyonumuz",
         vizyonDesc: "Gelinliği yalnızca bir kıyafet değil, her kadına özel tasarlanmış bir sanat eseri olarak görüyoruz. Türk el emeğinin ve terzilik geleneğinin dünya sahnesinde hak ettiği değeri bulmasını hedefliyoruz. Her dikişte mükemmelliği arayan, moda dünyasında özgün ve zamansız izler bırakan bir marka olma yolculuğumuz kararlılıkla devam ediyor. Yurt içi ve yurt dışındaki gelinlerimize ulaşmak, onları en özel günlerinde kendileri gibi—ama daha da güzel—hissettirmek en büyük hedefimizdir.",
